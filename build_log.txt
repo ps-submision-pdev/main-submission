@@ -1,0 +1,6 @@
+-checking out what will be stored in database and what will be stored in knowledgebase
+as there is a rule - "No ot her network calls: no out bound calls e x cept to t he configured model
+provider"
+so i cant really fetch the required department pdf's at run time
+but for the scope of this task I'll just downlooad on basis of persona
+
