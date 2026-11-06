@@ -836,3 +836,67 @@ Newest entries at the bottom. Commands are run from the repo root.
   - da358f9 agent log.
 - Pushed with a normal push (498e785..da358f9). chat.py, test.py and git_organisation_link.txt were left
   untracked, as before.
+
+## 2026-11-06: Dry-run preparation: partly done (usage limit reached)
+
+- Tests first, in tests/test_chat.py (+9). Done and passing:
+  - (a) route.py: a change word (add, take, also take, drop, remove, replace, swap, change my plan, instead of)
+    plus a slice course named by code or title words is change_plan, by code. This rule is checked before
+    the lookup rule, because "... in semester 4" contains a lookup word.
+  - (b) intake: a known topic is mapped to a check file's topic ("Python" -> "basic Python"); the quote is kept.
+  - (c) intake: "maths: probability and statistics" gives separate facts "probability" and "statistics"
+    (the slice's foundation names). A bare "maths" expands to every slice weakness via
+    config/buddy.yaml weakness_umbrella_words. Unrelated weaknesses are kept as said.
+- Not done yet (4 tests written, failing):
+  - the kb-slot-twice warning in candidates.check_candidate;
+  - revise returning "rejected" (earlier proposals with findings);
+  - the step-5 reply showing the rejection (page and quote) before the checked alternative;
+  - the "no check questions yet" wording.
+- The real-model dry run has not been run; there is no dry-run transcript or table yet. Nothing committed.
+  The profile folder holds no dry-run file.
+
+## 2026-11-06: Recording-script dry run: all steps pass
+
+- Remaining fixes from before the usage limit, each test first (tests/test_chat.py):
+  - candidates.check_candidate: new "kb-slot-twice" warning (a slot gets a second elective);
+  - revise returns "rejected" (every violating proposal with its findings);
+  - cli step-5 reply: the rejection (rule id, page, quote) comes first, then "this plan is checked: no rule is broken";
+  - offer_check wording: "no check questions yet (basic_python.json is empty)".
+- Dry run 1 (real model, driver in the session scratchpad drives buddy/chat/cli.Session with the student's exact
+  messages, own profile file, transcript data/logs/dryrun.md): 10/11 pass.
+  - Step 5 FAILED: the model's first proposal was already a valid swap, so the checker never saw the change as
+    asked. The 8.4(c) text in the reply was only the model's own note (no page or quote).
+- Fix (attempt 1 of 3), test first: revise.as_asked builds the change exactly as asked (current plan + the named
+  course, in the stated semester or the course's own) and checks it before any model proposal. Violations are
+  reported first, with page and quote, and passed to the model. 171 tests pass.
+- Dry run 2: 11/11 pass.
+  - Step 5 shows "violation: ord-8.4c-overload ... [ordinance page 4: "(c) Provision for overloading ..."]" and
+    "warning: kb-slot-twice", then the checked alternative (MA2206 replaces CS2207), saved as plan version 2.
+- Model call timing over both runs: 8 real calls, average 28.3 s, 1 call over 60 s (revise, 94.9 s). Run 2 reused
+  the cache for unchanged steps (intake, choose, the second revise).
+- Cleanup: data/profile/dryrun_chem_data_s4.json was deleted. data/profile/chem_data_s4.json was there before the
+  dry run (not created by it) and was left alone. Nothing committed.
+
+## 2026-11-06: Dry run repeated: same input, same plan
+
+- The student asked to rerun the recording dry run exactly the same way, to confirm that the same input gives
+  the same plan. The same driver, the same messages and --reset were used.
+- Result: 11/11 pass. All 6 model calls were answered from the LLM cache (0 real calls, 0 tokens).
+  - Plan versions 1-3 are identical to the previous run: v1 CS2207 + MA3107, v2 MA2206 + MA3107 (after the 8.4(c)
+    rejection), v3 MA2206 + MA3107.
+  - Every reply is word for word the same. The transcripts differ in only 6 lines: the time and token counts on
+    the two turns that were real calls last time, and the plan-version timestamp in the restart greeting.
+- Note for the student: identical output on a repeat comes from the cache (keyed by model, prompt version and
+  messages). Without the cache, temperature 0 on this free model gave the same choices but different wording
+  (Research runs C1-C3).
+- The dry-run profile and comparison copies were deleted; data/profile/chem_data_s4.json (pre-existing) was not
+  touched. Nothing committed.
+
+## 2026-11-06: make_it_sold.md written and pushed
+
+- At the student's request: make_it_sold.md (the name as typed) summarises the recording dry-run table (step,
+  result, seconds, tokens, plus what each step showed) and the repeat-run table (plan versions 1-3 the same).
+  Narrow tables and short paragraphs.
+- Pushed to the main repo with the dry-run fixes as a separate commit. 171 tests pass. The key scan matched only
+  the known test fakes; .env, data/logs and data/profile are ignored. No co-author lines; chat.py, test.py and
+  git_organisation_link.txt were left untracked.
