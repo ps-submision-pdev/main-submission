@@ -1,0 +1,867 @@
+{
+ "built_by": "buddy.kb_build",
+ "checks": {
+  "course_exists": [],
+  "size": [],
+  "slot_membership": []
+ },
+ "core": {
+  "4": [
+   "CB2201",
+   "CB2202",
+   "CB2203",
+   "CB2204",
+   "CB2205"
+  ],
+  "5": [
+   "CB3101",
+   "CB3102",
+   "CB3103",
+   "CB3104",
+   "CB3105"
+  ]
+ },
+ "courses": {
+  "CB2201": {
+   "category": "core",
+   "code": "CB2201",
+   "credits": 3.5,
+   "l": 2,
+   "learning_mode": "Classroom lectures and practical",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 3,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CB2102",
+     "quote": "Fluid-particle mechanics",
+     "raw": "Fluid-particle mechanics",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 2,
+    "quote": "1. CB2201 Mechanical Operations 2 0 3 3.5",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 4,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Mechanical Operations",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB2202": {
+   "category": "core",
+   "code": "CB2202",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Classroom lectures",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CB2105",
+     "quote": "Raoult’s and Henry’s law",
+     "raw": "Raoult’s and Henry’s law",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 2,
+    "quote": "2. CB2202 Mass Transfer-I 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 4,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Mass Transfer-I",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB2203": {
+   "category": "core",
+   "code": "CB2203",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Classroom lectures",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CB2202",
+     "quote": "gas-liquid mass transfer",
+     "raw": "gas-liquid mass transfer",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 2,
+    "quote": "Fundamentals of Biochemical\n3. CB2203 3 0 0 3\nEngineering",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 4,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Fundamentals of Biochemical Engineering",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB2204": {
+   "category": "core",
+   "code": "CB2204",
+   "credits": 4.0,
+   "l": 3,
+   "learning_mode": "Lectures and practical",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 2,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "MA1201",
+     "quote": "Laplace Transform",
+     "raw": "Laplace Transform",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 2,
+    "quote": "4. CB2204 Process Dynamics and Control 3 0 2 4",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 4,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Process Dynamics and Control",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB2205": {
+   "category": "core",
+   "code": "CB2205",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Classroom Lectures",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CB2104",
+     "quote": "mass and energy balance",
+     "raw": "mass and energy balance",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 2,
+    "quote": "5. CB2205 Chemical Reaction Engineering-I 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 4,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Chemical Reaction Engineering-I",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB3101": {
+   "category": "core",
+   "code": "CB3101",
+   "credits": 4.5,
+   "l": 3,
+   "learning_mode": "Lectures and practical",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 3,
+   "prerequisite_status": "explicit",
+   "prerequisites": [
+    {
+     "code": "CB2202",
+     "quote": "Pre-requisite | CB2202 (Mass Transfer-I)",
+     "raw": "CB2202 (Mass Transfer-I)",
+     "source": "explicit",
+     "trust": 0.9,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 3,
+    "quote": "1. CB3101 Mass Transfer-II 3 0 3 4.5",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 5,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Mass Transfer-II",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB3102": {
+   "category": "core",
+   "code": "CB3102",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Lectures",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CB2205",
+     "quote": "catalyst requirement",
+     "raw": "catalyst requirement",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 3,
+    "quote": "2. CB3102 Chemical Process Technology 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 5,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Chemical Process Technology",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB3103": {
+   "category": "core",
+   "code": "CB3103",
+   "credits": 3.0,
+   "l": 1,
+   "learning_mode": "Classroom lectures and tutorials",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 0,
+   "prerequisite_status": "explicit",
+   "prerequisites": [
+    {
+     "code": "CB2103",
+     "quote": "Pre-requisite | CB2103 (Heat Transfer), CB2202 (Mass Transfer-I)",
+     "raw": "CB2103 (Heat Transfer), CB2202 (Mass Transfer-I)",
+     "source": "explicit",
+     "trust": 0.9,
+     "verified": false
+    },
+    {
+     "code": "CB2202",
+     "quote": "Pre-requisite | CB2103 (Heat Transfer), CB2202 (Mass Transfer-I)",
+     "raw": "CB2103 (Heat Transfer), CB2202 (Mass Transfer-I)",
+     "source": "explicit",
+     "trust": 0.9,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 3,
+    "quote": "3. CB3103 Process Equipment Design 1 2 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 5,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 2,
+   "text_available": true,
+   "title": "Process Equipment Design",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB3104": {
+   "category": "core",
+   "code": "CB3104",
+   "credits": 4.0,
+   "l": 3,
+   "learning_mode": "Lectures",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 2,
+   "prerequisite_status": "explicit",
+   "prerequisites": [
+    {
+     "code": "CB2205",
+     "quote": "Pre-requisite | CB2205 (Chemical Reaction Engineering-I)",
+     "raw": "CB2205 (Chemical Reaction Engineering-I)",
+     "source": "explicit",
+     "trust": 0.9,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 3,
+    "quote": "4. CB3104 Chemical Reaction Engineering-II 3 0 2 4",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 5,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Chemical Reaction Engineering-II",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CB3105": {
+   "category": "core",
+   "code": "CB3105",
+   "credits": 3.5,
+   "l": 2,
+   "learning_mode": "Lectures and practical",
+   "owner": "Chemical and Biochemical Engineering",
+   "p": 3,
+   "prerequisite_status": "explicit",
+   "prerequisites": [
+    {
+     "code": "CB2205",
+     "quote": "Pre-requisite | CB2205 (Chemical Reaction Engineering-I)",
+     "raw": "CB2205 (Chemical Reaction Engineering-I)",
+     "source": "explicit",
+     "trust": 0.9,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 3,
+    "quote": "Chemical Process Modeling and\n5. CB3105 2 0 3 3.5\nSimulation",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": null,
+   "semester": 5,
+   "skills": [],
+   "slot": null,
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Chemical Process Modeling and Simulation",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CS2207": {
+   "category": "IDE",
+   "code": "CS2207",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Offline",
+   "owner": "Computer Science & Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [],
+   "provenance": {
+    "page": 19,
+    "quote": "IDE-I Semester-4 CS2207 Introduction to Data Science 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": {
+    "basis": "text",
+    "code": "CS2207",
+    "rank": 1,
+    "reason": "Directly teaches data collection, cleaning, analysis, and visualization, matching the student's programming, data, statistics, and visualization goals.",
+    "reason_source": "llm_inferred",
+    "source": "model",
+    "text_available": true,
+    "trust": 0.3
+   },
+   "semester": 4,
+   "skills": [],
+   "slot": "IDE-I",
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Introduction to Data Science",
+   "trust": 0.9,
+   "verified": false
+  },
+  "CS3106": {
+   "category": "IDE",
+   "code": "CS3106",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Offline",
+   "owner": "Computer Science & Engineering",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "CS1101",
+     "quote": "Coding sessions in class using C++, Python",
+     "raw": "Coding sessions in class using C++, Python",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 19,
+    "quote": "IDE-II Semester-5 CS3106 Computer Graphics 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": {
+    "basis": "text",
+    "code": "CS3106",
+    "rank": 2,
+    "reason": "Provides a graphics pipeline useful for visualization and image processing, supporting computing and visualization skills.",
+    "reason_source": "llm_inferred",
+    "source": "model",
+    "text_available": true,
+    "trust": 0.3
+   },
+   "semester": 5,
+   "skills": [],
+   "slot": "IDE-II",
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Computer Graphics",
+   "trust": 0.9,
+   "verified": false
+  },
+  "MA2206": {
+   "category": "IDE",
+   "code": "MA2206",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Lectures",
+   "owner": "Mathematics",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [
+    {
+     "code": "MA1201",
+     "quote": "ODE",
+     "raw": "ODE",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "code": "MA3107",
+     "quote": "partial differential equations",
+     "raw": "partial differential equations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "provenance": {
+    "page": 44,
+    "quote": "1. MA2206 Introduction to Numerical Methods 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": {
+    "basis": "text",
+    "code": "MA2206",
+    "rank": 2,
+    "reason": "Covers numerical solutions of nonlinear equations, ODEs/PDEs, and finite differences, building the differential equations and linear algebra weaknesses needed for simulations.",
+    "reason_source": "llm_inferred",
+    "source": "model",
+    "text_available": true,
+    "trust": 0.3
+   },
+   "semester": 4,
+   "skills": [],
+   "slot": "IDE-I",
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Introduction to Numerical Methods",
+   "trust": 0.9,
+   "verified": false
+  },
+  "MA3107": {
+   "category": "IDE",
+   "code": "MA3107",
+   "credits": 3.0,
+   "l": 3,
+   "learning_mode": "Lectures",
+   "owner": "Mathematics",
+   "p": 0,
+   "prerequisite_status": "model",
+   "prerequisites": [],
+   "provenance": {
+    "page": 44,
+    "quote": "2. MA3107 Partial Differential Equations 3 0 0 3",
+    "source_id": "curriculum_nep2020",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+   },
+   "rank": {
+    "basis": "text",
+    "code": "MA3107",
+    "rank": 1,
+    "reason": "Introduces Fourier series/transforms and PDE solution techniques, directly strengthening the student's differential equations weakness for modelling and simulation.",
+    "reason_source": "llm_inferred",
+    "source": "model",
+    "text_available": true,
+    "trust": 0.3
+   },
+   "semester": 5,
+   "skills": [],
+   "slot": "IDE-II",
+   "source": "database",
+   "t": 0,
+   "text_available": true,
+   "title": "Partial Differential Equations",
+   "trust": 0.9,
+   "verified": false
+  }
+ },
+ "foundations": [
+  {
+   "code": "CS2207",
+   "reason": "Both courses cover data science and data analysis, which include probability concepts.",
+   "semester": 4,
+   "slot": "IDE-I",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "probability"
+  },
+  {
+   "code": "CS4113",
+   "reason": "Both courses cover data science and data analysis, which include probability concepts.",
+   "semester": 7,
+   "slot": "IDE-III",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "probability"
+  },
+  {
+   "code": "CS2207",
+   "reason": "Both courses teach statistical analysis and data inference techniques.",
+   "semester": 4,
+   "slot": "IDE-I",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "statistics"
+  },
+  {
+   "code": "CS4113",
+   "reason": "Both courses teach statistical analysis and data inference techniques.",
+   "semester": 7,
+   "slot": "IDE-III",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "statistics"
+  },
+  {
+   "code": "MA2206",
+   "reason": "MA2206 teaches numerical solutions of ODEs and PDEs, and MA3107 covers theory and solutions of partial differential equations.",
+   "semester": 4,
+   "slot": "IDE-I",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "differential equations"
+  },
+  {
+   "code": "MA3107",
+   "reason": "MA2206 teaches numerical solutions of ODEs and PDEs, and MA3107 covers theory and solutions of partial differential equations.",
+   "semester": 5,
+   "slot": "IDE-II",
+   "source": "llm_inferred",
+   "trust": 0.3,
+   "verified": false,
+   "weakness": "differential equations"
+  }
+ ],
+ "horizon": [
+  4,
+  5
+ ],
+ "input_hash": "3b1de3e5a95aca0270fc8c8c07965f1ab3239081114942eba117026ffeaafd10",
+ "later_core": {
+  "6": [
+   "CB3201",
+   "CB3202",
+   "CB3203",
+   "CB3204",
+   "CB3205"
+  ],
+  "7": [
+   "CB4198",
+   "CB4199"
+  ],
+  "8": [
+   "CB4299"
+  ]
+ },
+ "model": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+ "open_limits": [
+  {
+   "id": "open-semester-credit-limit",
+   "searched": "btech_ordinance, curriculum_nep2020, btech_program_nep2020, cbe_btech (reports/rule_candidates.md, topic 1)",
+   "text": "No per-semester credit limit on the NEP-2020 scale was found. The only per-semester credit limit (ordinance 8.4(b), 30-50 credits) is on an old scale and is not used."
+  },
+  {
+   "id": "open-minor-eligibility",
+   "searched": "btech_ordinance, curriculum_nep2020, btech_program_nep2020, cbe_btech (reports/rule_candidates.md, topic 3)",
+   "text": "No rule found on who may take a Minor, when, or with what CPI. The only related line is a list heading: 'Minor in Business Studies: (Only open to B. Tech. / BS-MBA Dual Degree)' (curriculum_nep2020 p40)."
+  }
+ ],
+ "persona_id": "chem_data_s4",
+ "prompt_versions": {
+  "foundations": "foundations_v1",
+  "prerequisites": "prereq_v1",
+  "rank": "rank_v2"
+ },
+ "rank_source": "model",
+ "rules": [
+  {
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "id": "ord-8.4a-first-year-before-third-year",
+   "kind": "prerequisite",
+   "parameters": {
+    "required_before": {
+     "from_year": 3,
+     "requires_passed_year": 1
+    }
+   },
+   "provenance": {
+    "clause": "8.4(a)",
+    "page": 4,
+    "quote": "(a) A student must pass all first year courses before registering for the third year courses.",
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+   },
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "text": "All first-year courses must be passed before registering for any third-year course.",
+   "verified": false
+  },
+  {
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "id": "ord-8.4c-overload",
+   "kind": "eligibility",
+   "parameters": {
+    "extra_courses": 1,
+    "from_semester": 5,
+    "min_cpi": 8.0,
+    "requires_approval": true
+   },
+   "provenance": {
+    "clause": "8.4(c)",
+    "page": 4,
+    "quote": "(c) Provision for overloading: Students of 5th semester onwards having CPI of at least 8.0 may be allowed to credit an extra course per semester over the prescribed list of courses of the department for the concerned semester. Interested students with CPI of at least 8.0 may apply to Dean/ Associate Dean (Academic) through Faculty advisor and HoD",
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+   },
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "text": "From semester 5, a student with CPI at least 8.0 may take one extra course per semester, with Dean/Associate Dean (Academic) approval.",
+   "verified": false
+  },
+  {
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "id": "ord-12.1a-low-cpi",
+   "kind": "other",
+   "parameters": {
+    "consecutive_semesters": 2,
+    "warn_below": 5.0
+   },
+   "provenance": {
+    "clause": "12.1(a)",
+    "page": 5,
+    "quote": "(a) If a student fails to secure a CPI of 5.0 at the end of any semester. However, a student securing a CPI below 5.0 may be allowed to continue in the following semester on the recommendation of DAPC and with the approval of IAPC. Simultaneously the student will be issued a warning that his/her CPI has to come up to a value of at least 5.0. Students who secure a CPI below 5.0 in two consecutive semesters may not be allowed to continue in the undergraduate program.",
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+   },
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "text": "A CPI below 5.0 at the end of a semester brings a warning; a CPI below 5.0 in two consecutive semesters may end the student's continuation in the programme.",
+   "verified": false
+  },
+  {
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "id": "ord-8.4b-contact-hours",
+   "kind": "credit_limit",
+   "note": "Only the second sentence is used. The first sentence (not less than 30 and not more than 50 credits per semester) is on an old scale: NEP-2020 semester totals are 16-23.5 credits and the Chemical degree total is 166.",
+   "parameters": {
+    "max_contact_hours_per_week": 32
+   },
+   "provenance": {
+    "clause": "8.4(b), second sentence",
+    "page": 4,
+    "quote": "The L-T-P loading for a semester should not exceed 32 contact hours per week.",
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+   },
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "text": "A semester's L-T-P load may not exceed 32 contact hours per week.",
+   "verified": false
+  }
+ ],
+ "slots": [
+  {
+   "full_records": true,
+   "options": [
+    "CS2207",
+    "MA2206"
+   ],
+   "semester": 4,
+   "slot": "IDE-I"
+  },
+  {
+   "full_records": true,
+   "options": [
+    "MA3107",
+    "CS3106"
+   ],
+   "semester": 5,
+   "slot": "IDE-II"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB3206",
+    "CB3207",
+    "CB3208",
+    "CB3209"
+   ],
+   "semester": 6,
+   "slot": "DE-I"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB4101",
+    "CB4102",
+    "CB4103"
+   ],
+   "semester": 7,
+   "slot": "DE-II"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB4104",
+    "CB4105",
+    "CB4106",
+    "CB4107"
+   ],
+   "semester": 7,
+   "slot": "DE-III"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "HS4114",
+    "HS4115",
+    "HS4116",
+    "HS4117",
+    "HS4118",
+    "HS4119",
+    "HS4120"
+   ],
+   "semester": 7,
+   "slot": "HSS-II"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CE4111",
+    "CE4112",
+    "CH4111",
+    "CS4113",
+    "EC4107",
+    "HS4121",
+    "HS4122",
+    "HS4123",
+    "PH4110"
+   ],
+   "semester": 7,
+   "slot": "IDE-III"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB4201",
+    "CB4202",
+    "CB4203"
+   ],
+   "semester": 8,
+   "slot": "DE-IV"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB4204",
+    "CB4205",
+    "CB4206"
+   ],
+   "semester": 8,
+   "slot": "DE-V"
+  },
+  {
+   "full_records": false,
+   "options": [
+    "CB4207",
+    "CB4208",
+    "CB4209",
+    "CB4210"
+   ],
+   "semester": 8,
+   "slot": "DE-VI"
+  }
+ ],
+ "verified": false,
+ "window": [
+  4,
+  8
+ ]
+}

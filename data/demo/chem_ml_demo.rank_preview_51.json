@@ -1,0 +1,695 @@
+{
+ "rank_source": "model",
+ "model": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+ "usage": {
+  "attempts": 1,
+  "prompt_tokens": 4670,
+  "completion_tokens": 3962,
+  "total_tokens": 8632
+ },
+ "by_slot": {
+  "IDE-II": [
+   {
+    "code": "CS3106",
+    "reason": "Covers AI‑related graphics pipelines and Python, giving a practical introduction to machine‑learning concepts.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "MA3107",
+    "reason": "Teaches Fourier series, transforms, and PDE solutions, directly addressing the student’s differential‑equations weakness.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "MA3106",
+    "reason": "Introduces computational commutative algebra, offering algorithmic thinking but limited direct relevance to ML.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "PH3101",
+    "reason": "Explores energy materials processing, a physics‑oriented topic with limited relevance to ML.",
+    "source": "model",
+    "rank": 4
+   },
+   {
+    "code": "PH3102",
+    "reason": "Covers mechanics in physics, not aligned with the student’s data‑science objectives.",
+    "source": "model",
+    "rank": 5
+   },
+   {
+    "code": "EC3106",
+    "reason": "Introduces communication systems, unrelated to chemical process data analysis.",
+    "source": "model",
+    "rank": 6
+   },
+   {
+    "code": "CE3105",
+    "reason": "Green building concepts, civil‑engineering focus with no relevance to ML or math gaps.",
+    "source": "model",
+    "rank": 7
+   },
+   {
+    "code": "CH3106",
+    "reason": "Synthesis of inorganic molecules, chemistry‑focused without modeling or statistics.",
+    "source": "model",
+    "rank": 8
+   },
+   {
+    "code": "HS3105",
+    "reason": "Gender and women’s studies, humanities elective with no technical relevance.",
+    "source": "model",
+    "rank": 9
+   },
+   {
+    "code": "HS3106",
+    "reason": "Speech acoustics fundamentals, unrelated to the student’s goals.",
+    "source": "model",
+    "rank": 10
+   },
+   {
+    "code": "HS3107",
+    "reason": "Globalization and social change, humanities content not supporting ML or math.",
+    "source": "model",
+    "rank": 11
+   },
+   {
+    "code": "HS3108",
+    "reason": "Innovation and entrepreneurship, may inspire but lacks technical training.",
+    "source": "model",
+    "rank": 12
+   },
+   {
+    "code": "HS3109",
+    "reason": "Financial economics, not aligned with chemical process data analysis.",
+    "source": "model",
+    "rank": 13
+   },
+   {
+    "code": "HS3110",
+    "reason": "Development economics, humanities elective with no computational focus.",
+    "source": "model",
+    "rank": 14
+   }
+  ],
+  "DE-I": [
+   {
+    "code": "CB3207",
+    "reason": "Uses model‑based Quality‑by‑Design for chromatography, providing hands‑on process modeling experience.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB3206",
+    "reason": "Teaches catalysis fundamentals, important for reaction engineering but lacking computational focus.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB3208",
+    "reason": "Introduces material selection principles, offering engineering breadth without modeling or statistics.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "CB3209",
+    "reason": "Covers microfluidics fundamentals, relevant to lab‑scale processes but not to data analytics.",
+    "source": "model",
+    "rank": 4
+   }
+  ],
+  "DE-II": [
+   {
+    "code": "CB4103",
+    "reason": "Focuses on molecular modeling and simulation, building the simulation and modeling skills needed for data‑driven process engineering.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB4102",
+    "reason": "Introduces computational modeling of biological systems, strengthening modeling abilities transferable to chemical processes.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB4101",
+    "reason": "Covers pollutant removal process design, giving domain knowledge but no ML or math reinforcement.",
+    "source": "model",
+    "rank": 3
+   }
+  ],
+  "DE-III": [
+   {
+    "code": "CB4104",
+    "reason": "Presents mathematical models of electrochemical energy systems, supporting process modeling skills.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB4105",
+    "reason": "Focuses on fertilizer manufacturing, providing chemical‑engineering context without quantitative modeling.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB4106",
+    "reason": "Surveys nanomaterial properties, useful for materials awareness but not for ML or math gaps.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "CB4107",
+    "reason": "Explores combustion thermodynamics, relevant to process engineering but not to data‑driven methods.",
+    "source": "model",
+    "rank": 4
+   }
+  ],
+  "HSS-II": [
+   {
+    "code": "HS4114",
+    "reason": "Intellectual property rights, legal knowledge not relevant to ML.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "HS4115",
+    "reason": "Leadership, literature, and life, a soft‑skills course without technical content.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "HS4116",
+    "reason": "Gender in Indian cinema, humanities elective unrelated to engineering goals.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "HS4117",
+    "reason": "Media and linguistics, no relevance to data science or chemical engineering.",
+    "source": "model",
+    "rank": 4
+   },
+   {
+    "code": "HS4118",
+    "reason": "Sociology of development, humanities course not supporting technical objectives.",
+    "source": "model",
+    "rank": 5
+   },
+   {
+    "code": "HS4119",
+    "reason": "Industrial psychology, soft‑skill focus with no quantitative training.",
+    "source": "model",
+    "rank": 6
+   },
+   {
+    "code": "HS4120",
+    "reason": "Business ethics, important professionally but not for ML or math gaps.",
+    "source": "model",
+    "rank": 7
+   }
+  ],
+  "IDE-III": [
+   {
+    "code": "CS4113",
+    "reason": "Teaches data cleaning, statistical analysis, and visualization in Python, directly enabling machine‑learning on chemical process data.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "PH4110",
+    "reason": "Focuses on photovoltaics and fuel cells, offering energy‑technology knowledge but no computational methods.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "EC4107",
+    "reason": "Covers quantum computing fundamentals, interesting but not directly applicable to current ML goals.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "CE4111",
+    "reason": "Smart transportation systems, outside the student’s chemical‑engineering and data‑science scope.",
+    "source": "model",
+    "rank": 4
+   },
+   {
+    "code": "CE4112",
+    "reason": "Industrial pollution control from a civil perspective, not supporting computational skills.",
+    "source": "model",
+    "rank": 5
+   },
+   {
+    "code": "CH4111",
+    "reason": "Analytical chemistry techniques, useful for lab work but not for data‑driven modeling.",
+    "source": "model",
+    "rank": 6
+   },
+   {
+    "code": "HS4121",
+    "reason": "Critical and creative writing, humanities elective without technical benefit.",
+    "source": "model",
+    "rank": 7
+   },
+   {
+    "code": "HS4122",
+    "reason": "Forensic linguistics, unrelated to the student’s machine‑learning aims.",
+    "source": "model",
+    "rank": 8
+   },
+   {
+    "code": "HS4123",
+    "reason": "Supply chain management, operations focus but no data‑science or modeling component.",
+    "source": "model",
+    "rank": 9
+   }
+  ],
+  "DE-IV": [
+   {
+    "code": "CB4201",
+    "reason": "Describes membrane technologies, providing process knowledge but no computational training.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB4202",
+    "reason": "Surveys energy storage systems, giving domain insight without modeling or ML components.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB4203",
+    "reason": "Focuses on process integration modeling, modestly supporting systems‑level thinking.",
+    "source": "model",
+    "rank": 3
+   }
+  ],
+  "DE-V": [
+   {
+    "code": "CB4205",
+    "reason": "Develops simulation techniques for mass‑transfer separations, reinforcing simulation competence.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB4206",
+    "reason": "Covers fluidization simulation fundamentals, useful for process‑scale simulation practice.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB4204",
+    "reason": "Covers renewable energy plant design, useful for sustainability context but not for ML.",
+    "source": "model",
+    "rank": 3
+   }
+  ],
+  "DE-VI": [
+   {
+    "code": "CB4207",
+    "reason": "Combines modeling, optimization, and simulation of energy systems, aligning with the student’s optimization and simulation goals.",
+    "source": "model",
+    "rank": 1
+   },
+   {
+    "code": "CB4209",
+    "reason": "Provides polymer property data and processing knowledge, a domain‑specific dataset for data‑driven modeling.",
+    "source": "model",
+    "rank": 2
+   },
+   {
+    "code": "CB4208",
+    "reason": "Details heterogeneous catalysis and transport resistances, relevant to reaction engineering only.",
+    "source": "model",
+    "rank": 3
+   },
+   {
+    "code": "CB4210",
+    "reason": "Introduces petroleum refinery unit operations, providing industry background without data skills.",
+    "source": "model",
+    "rank": 4
+   }
+  ]
+ },
+ "decisions": [
+  {
+   "said": {
+    "code": "CS4113",
+    "reason": "Teaches data cleaning, statistical analysis, and visualization in Python, directly enabling machine‑learning on chemical process data."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CS3106",
+    "reason": "Covers AI‑related graphics pipelines and Python, giving a practical introduction to machine‑learning concepts."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4103",
+    "reason": "Focuses on molecular modeling and simulation, building the simulation and modeling skills needed for data‑driven process engineering."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4102",
+    "reason": "Introduces computational modeling of biological systems, strengthening modeling abilities transferable to chemical processes."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4207",
+    "reason": "Combines modeling, optimization, and simulation of energy systems, aligning with the student’s optimization and simulation goals."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB3207",
+    "reason": "Uses model‑based Quality‑by‑Design for chromatography, providing hands‑on process modeling experience."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4205",
+    "reason": "Develops simulation techniques for mass‑transfer separations, reinforcing simulation competence."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4206",
+    "reason": "Covers fluidization simulation fundamentals, useful for process‑scale simulation practice."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4209",
+    "reason": "Provides polymer property data and processing knowledge, a domain‑specific dataset for data‑driven modeling."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "MA3107",
+    "reason": "Teaches Fourier series, transforms, and PDE solutions, directly addressing the student’s differential‑equations weakness."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "MA3106",
+    "reason": "Introduces computational commutative algebra, offering algorithmic thinking but limited direct relevance to ML."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4104",
+    "reason": "Presents mathematical models of electrochemical energy systems, supporting process modeling skills."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4101",
+    "reason": "Covers pollutant removal process design, giving domain knowledge but no ML or math reinforcement."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4105",
+    "reason": "Focuses on fertilizer manufacturing, providing chemical‑engineering context without quantitative modeling."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4106",
+    "reason": "Surveys nanomaterial properties, useful for materials awareness but not for ML or math gaps."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4107",
+    "reason": "Explores combustion thermodynamics, relevant to process engineering but not to data‑driven methods."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB3206",
+    "reason": "Teaches catalysis fundamentals, important for reaction engineering but lacking computational focus."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB3208",
+    "reason": "Introduces material selection principles, offering engineering breadth without modeling or statistics."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB3209",
+    "reason": "Covers microfluidics fundamentals, relevant to lab‑scale processes but not to data analytics."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4201",
+    "reason": "Describes membrane technologies, providing process knowledge but no computational training."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4202",
+    "reason": "Surveys energy storage systems, giving domain insight without modeling or ML components."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4203",
+    "reason": "Focuses on process integration modeling, modestly supporting systems‑level thinking."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4204",
+    "reason": "Covers renewable energy plant design, useful for sustainability context but not for ML."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4208",
+    "reason": "Details heterogeneous catalysis and transport resistances, relevant to reaction engineering only."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CB4210",
+    "reason": "Introduces petroleum refinery unit operations, providing industry background without data skills."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "PH3101",
+    "reason": "Explores energy materials processing, a physics‑oriented topic with limited relevance to ML."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "PH3102",
+    "reason": "Covers mechanics in physics, not aligned with the student’s data‑science objectives."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "PH4110",
+    "reason": "Focuses on photovoltaics and fuel cells, offering energy‑technology knowledge but no computational methods."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "EC3106",
+    "reason": "Introduces communication systems, unrelated to chemical process data analysis."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "EC4107",
+    "reason": "Covers quantum computing fundamentals, interesting but not directly applicable to current ML goals."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CE3105",
+    "reason": "Green building concepts, civil‑engineering focus with no relevance to ML or math gaps."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CE4111",
+    "reason": "Smart transportation systems, outside the student’s chemical‑engineering and data‑science scope."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CE4112",
+    "reason": "Industrial pollution control from a civil perspective, not supporting computational skills."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CH3106",
+    "reason": "Synthesis of inorganic molecules, chemistry‑focused without modeling or statistics."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "CH4111",
+    "reason": "Analytical chemistry techniques, useful for lab work but not for data‑driven modeling."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3105",
+    "reason": "Gender and women’s studies, humanities elective with no technical relevance."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3106",
+    "reason": "Speech acoustics fundamentals, unrelated to the student’s goals."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3107",
+    "reason": "Globalization and social change, humanities content not supporting ML or math."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3108",
+    "reason": "Innovation and entrepreneurship, may inspire but lacks technical training."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3109",
+    "reason": "Financial economics, not aligned with chemical process data analysis."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS3110",
+    "reason": "Development economics, humanities elective with no computational focus."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4114",
+    "reason": "Intellectual property rights, legal knowledge not relevant to ML."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4115",
+    "reason": "Leadership, literature, and life, a soft‑skills course without technical content."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4116",
+    "reason": "Gender in Indian cinema, humanities elective unrelated to engineering goals."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4117",
+    "reason": "Media and linguistics, no relevance to data science or chemical engineering."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4118",
+    "reason": "Sociology of development, humanities course not supporting technical objectives."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4119",
+    "reason": "Industrial psychology, soft‑skill focus with no quantitative training."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4120",
+    "reason": "Business ethics, important professionally but not for ML or math gaps."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4121",
+    "reason": "Critical and creative writing, humanities elective without technical benefit."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4122",
+    "reason": "Forensic linguistics, unrelated to the student’s machine‑learning aims."
+   },
+   "verdict": "accepted"
+  },
+  {
+   "said": {
+    "code": "HS4123",
+    "reason": "Supply chain management, operations focus but no data‑science or modeling component."
+   },
+   "verdict": "accepted"
+  }
+ ]
+}

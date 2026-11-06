@@ -1,0 +1,96 @@
+{
+ "rules": [
+  {
+   "id": "ord-8.4a-first-year-before-third-year",
+   "kind": "prerequisite",
+   "text": "All first-year courses must be passed before registering for any third-year course.",
+   "parameters": {
+    "required_before": {
+     "from_year": 3,
+     "requires_passed_year": 1
+    }
+   },
+   "provenance": {
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf",
+    "clause": "8.4(a)",
+    "page": 4,
+    "quote": "(a) A student must pass all first year courses before registering for the third year courses."
+   },
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "verified": false
+  },
+  {
+   "id": "ord-8.4c-overload",
+   "kind": "eligibility",
+   "text": "From semester 5, a student with CPI at least 8.0 may take one extra course per semester, with Dean/Associate Dean (Academic) approval.",
+   "parameters": {
+    "min_cpi": 8.0,
+    "from_semester": 5,
+    "extra_courses": 1,
+    "requires_approval": true
+   },
+   "provenance": {
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf",
+    "clause": "8.4(c)",
+    "page": 4,
+    "quote": "(c) Provision for overloading: Students of 5th semester onwards having CPI of at least 8.0 may be allowed to credit an extra course per semester over the prescribed list of courses of the department for the concerned semester. Interested students with CPI of at least 8.0 may apply to Dean/ Associate Dean (Academic) through Faculty advisor and HoD"
+   },
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "verified": false
+  },
+  {
+   "id": "ord-12.1a-low-cpi",
+   "kind": "other",
+   "text": "A CPI below 5.0 at the end of a semester brings a warning; a CPI below 5.0 in two consecutive semesters may end the student's continuation in the programme.",
+   "parameters": {
+    "warn_below": 5.0,
+    "consecutive_semesters": 2
+   },
+   "provenance": {
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf",
+    "clause": "12.1(a)",
+    "page": 5,
+    "quote": "(a) If a student fails to secure a CPI of 5.0 at the end of any semester. However, a student securing a CPI below 5.0 may be allowed to continue in the following semester on the recommendation of DAPC and with the approval of IAPC. Simultaneously the student will be issued a warning that his/her CPI has to come up to a value of at least 5.0. Students who secure a CPI below 5.0 in two consecutive semesters may not be allowed to continue in the undergraduate program."
+   },
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "verified": false
+  },
+  {
+   "id": "ord-8.4b-contact-hours",
+   "kind": "credit_limit",
+   "text": "A semester's L-T-P load may not exceed 32 contact hours per week.",
+   "parameters": {
+    "max_contact_hours_per_week": 32
+   },
+   "provenance": {
+    "source_id": "btech_ordinance",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf",
+    "clause": "8.4(b), second sentence",
+    "page": 4,
+    "quote": "The L-T-P loading for a semester should not exceed 32 contact hours per week."
+   },
+   "note": "Only the second sentence is used. The first sentence (not less than 30 and not more than 50 credits per semester) is on an old scale: NEP-2020 semester totals are 16-23.5 credits and the Chemical degree total is 166.",
+   "fetched_at": "2026-11-05T08:15:02+00:00",
+   "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+   "verified": false
+  }
+ ],
+ "open_limits": [
+  {
+   "id": "open-semester-credit-limit",
+   "text": "No per-semester credit limit on the NEP-2020 scale was found. The only per-semester credit limit (ordinance 8.4(b), 30-50 credits) is on an old scale and is not used.",
+   "searched": "btech_ordinance, curriculum_nep2020, btech_program_nep2020, cbe_btech (reports/rule_candidates.md, topic 1)"
+  },
+  {
+   "id": "open-minor-eligibility",
+   "text": "No rule found on who may take a Minor, when, or with what CPI. The only related line is a list heading: 'Minor in Business Studies: (Only open to B. Tech. / BS-MBA Dual Degree)' (curriculum_nep2020 p40).",
+   "searched": "btech_ordinance, curriculum_nep2020, btech_program_nep2020, cbe_btech (reports/rule_candidates.md, topic 3)"
+  }
+ ]
+}
