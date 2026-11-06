@@ -14,3 +14,8 @@ recent_turns: 6
 
 # How many plans the model may propose for one change request before code gives the nearest valid plan.
 max_revise_attempts: 2
+
+# A weakness stated only as one of these broad words ("I'm bad at maths") is stored as every weakness the
+# KB slice's foundations name (e.g. probability, statistics, differential equations). If the student
+# also names a specific one ("maths: probability"), only the specific ones are kept.
+weakness_umbrella_words: [maths, math, mathematics]

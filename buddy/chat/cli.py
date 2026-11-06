@@ -42,6 +42,13 @@ def slug(topic: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", topic.lower()).strip("_")
 
 
+def problem_lines(findings: list) -> list[str]:
+    """Violations and warnings in plain words, with the ordinance page and quote when a rule is behind them."""
+    return [f"  {f['severity']}: {f['rule_id']}: {f['message']}"
+            + (f" [ordinance page {f['page']}: \"{f['quote']}\"]" if f.get("page") else "")
+            for f in findings]
+
+
 class Session:
     def __init__(self, persona_id: str, llm, profile_path=None, now=None):
         self.persona = load_persona(ROOT / "personas" / f"{persona_id}.json")
@@ -111,7 +118,7 @@ class Session:
     # ----- steps -----
 
     def do_intake(self, message: str) -> str:
-        out = intake(message, self.profile, self.llm, self.settings["prompts"]["intake"], self.now())
+        out = intake(message, self.profile, self.llm, self.settings["prompts"]["intake"], self.now(), kb=self.kb)
         self.calls.append(out["call"])
         lines = ["I noted:"] + [f"  {fact_text(f)}: \"{f['quote']}\"" + ("" if f["current"] else " (kept in history: a "
                  "higher-trust fact wins)") for f in out["kept"]] if out["kept"] else ["I could not note any facts."]
@@ -136,7 +143,7 @@ class Session:
         try:
             grade(check, [0] * len(check["questions"]))
         except CheckError:
-            return f"{topic}: the check questions are not written yet ({path.name}), so I will not skip it."
+            return f"{topic}: no check questions yet ({path.name} is empty), so I will not skip it."
         questions = "\n".join(f"  {i}. {q['question']} " + " ".join(f"({j}) {o}" for j, o in enumerate(q["options"], 1))
                               for i, q in enumerate(check["questions"], 1))
         self.pending = {"topic": topic, "check": check,
@@ -173,14 +180,18 @@ class Session:
                      self.settings["max_revise_attempts"], self.now())
         self.calls.extend(out["calls"])
         warnings = [f"Warning: {f['message']}" for f in out["findings"] if f["severity"] == "warning"]
+        lines = []
+        if out["rejected"]:                      # the change as first proposed broke a rule: say so, with the source
+            lines += ["I could not make that change as asked, because it breaks a rule:"]
+            lines += problem_lines(out["rejected"][0]["findings"])
         if out["accepted"]:
-            return "\n".join([f"Done. {out['note']}"] + warnings + [self.show_plan()])
-        problems = [f"  {f['rule_id']}: {f['message']}" + (f" [ordinance page {f['page']}: \"{f['quote']}\"]" if f["page"] else "")
-                    for f in out["findings"] if f["severity"] == "violation"]
-        lines = ["I could not make that change without breaking a rule:"] + problems if problems else \
-            ["I could not make that change."]
+            head = "Instead, " if out["rejected"] else ""
+            lines += [f"{head}this plan is checked: no rule is broken. {out['note']}".strip()] + warnings + [self.show_plan()]
+            return "\n".join(lines)
+        if not out["rejected"]:
+            lines += ["I could not make that change."] + problem_lines(out["findings"])
         if out["nearest"]:
-            lines += ["The nearest plan that keeps every rule (not saved; ask me to switch if you want it):",
+            lines += ["The nearest plan that is checked: no rule is broken (not saved; ask me to switch if you want it):",
                       render_plan("nearest", out["nearest"], self.kb, self.profile, [])]
         return "\n".join(lines)
 

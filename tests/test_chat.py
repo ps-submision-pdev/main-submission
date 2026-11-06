@@ -253,3 +253,104 @@ def test_broken_json_timeout_and_rate_limit_give_a_friendly_message_and_no_crash
         assert turn["by"] == "fallback", name
         assert "model is not available" in turn["reply"], name
         assert s.profile["plan_versions"][-1]["plan"] == {"4": S4 + ["CS2207"], "5": S5 + ["MA3107"]}, name
+
+
+# ---------- dry-run fixes (a, b, c) and the step-5 reply ----------
+
+def test_a_change_request_with_a_code_or_a_title_is_routed_by_code():
+    llm, p = FakeLLM(), profile()
+    p["turns"] = [{"role": "student", "text": "hi"}]
+    for message in ["Change my plan: add MA2206 as an extra course in semester 4.",
+                    "Can I also take Numerical Methods this semester?",
+                    "drop CS2207", "swap Computer Graphics for Partial Differential Equations"]:
+        out = R.route(message, KB, p, llm, "route_v1")
+        assert (out["intent"], out["by"]) == ("change_plan", "code"), message
+    assert R.route("credits of CB2204?", KB, p, llm, "route_v1")["intent"] == "lookup"        # unchanged
+    assert R.route("what is rule 8.4(c)?", KB, p, llm, "route_v1")["intent"] == "rule"         # unchanged
+    assert llm.calls == []
+
+
+def test_a_known_topic_is_normalised_to_its_check_file_topic_and_keeps_the_quote():
+    llm = FakeLLM(intake_v1=ok({"facts": [{"field": "known_topic", "value": "Python", "quote": "I know basic Python"}]}))
+    p = P.new_profile("chem_data_s4")
+    out = I.intake("I know basic Python.", p, llm, "intake_v1", now=T0, kb=KB)
+    assert [(f["value"], f["quote"]) for f in out["kept"]] == [("basic Python", "I know basic Python")]
+    assert P.supports(p, "basic Python")["fact_ids"]
+
+
+def test_a_combined_weakness_becomes_separate_facts_matching_the_slice():
+    msg = "my maths is weak: probability and statistics."
+    llm = FakeLLM(intake_v1=ok({"facts": [{"field": "weakness", "value": "maths: probability and statistics",
+                                           "quote": "my maths is weak: probability and statistics"}]}))
+    p = P.new_profile("chem_data_s4")
+    out = I.intake(msg, p, llm, "intake_v1", now=T0, kb=KB)
+    assert sorted(f["value"] for f in out["kept"]) == ["probability", "statistics"]
+    assert all(f["quote"] == "my maths is weak: probability and statistics" for f in out["kept"])
+
+
+def test_a_bare_maths_weakness_maps_to_every_slice_weakness_by_config():
+    llm = FakeLLM(intake_v1=ok({"facts": [{"field": "weakness", "value": "maths", "quote": "bad at maths"}]}))
+    p = P.new_profile("chem_data_s4")
+    out = I.intake("I'm bad at maths.", p, llm, "intake_v1", now=T0, kb=KB)
+    assert sorted(f["value"] for f in out["kept"]) == sorted({f["weakness"] for f in KB["foundations"]})
+
+
+def test_an_unrelated_weakness_is_kept_as_said():
+    llm = FakeLLM(intake_v1=ok({"facts": [{"field": "weakness", "value": "organic chemistry", "quote": "organic chemistry"}]}))
+    p = P.new_profile("chem_data_s4")
+    out = I.intake("I struggle with organic chemistry.", p, llm, "intake_v1", now=T0, kb=KB)
+    assert [f["value"] for f in out["kept"]] == ["organic chemistry"]
+
+
+def test_a_second_elective_in_one_slot_is_a_warning_and_the_extra_course_a_violation():
+    found = check_candidate({4: S4 + ["CS2207", "MA2206"]}, KB, profile(), RULES)
+    kinds = {(f["rule_id"], f["severity"]) for f in found}
+    assert ("ord-8.4c-overload", "violation") in kinds and ("kb-slot-twice", "warning") in kinds
+
+
+def test_revise_reports_the_rejected_proposal_even_when_a_later_one_passes(tmp_path):
+    p = profile()
+    llm = FakeLLM(revise_v1=[ok({"plan": {"4": S4 + ["CS2207", "MA2206"], "5": S5 + ["MA3107"]}, "note": "added"}),
+                             ok({"plan": {"4": S4 + ["MA2206"], "5": S5 + ["MA3107"]}, "note": "swapped instead"})])
+    out = RV.revise("Change my plan: add MA2206 as an extra course in semester 4.", plans_for(p)[0], KB, p, llm, "revise_v1", now=T0)
+    assert out["accepted"] is True and out["rejected"][0]["findings"]
+    assert any(f["rule_id"] == "ord-8.4c-overload" and f["page"] == 4 for f in out["rejected"][0]["findings"])
+
+
+def test_session_step_5_shows_the_rejection_with_page_and_quote_then_the_checked_alternative(tmp_path):
+    llm = session_llm()
+    llm.replies["revise_v1"] = [ok({"plan": {"4": S4 + ["CS2207", "MA2206"], "5": S5 + ["MA3107"]}, "note": "added"}),
+                                ok({"plan": {"4": S4 + ["MA2206"], "5": S5 + ["MA3107"]}, "note": "swapped instead"})]
+    s = Session("chem_data_s4", llm, profile_path=tmp_path / "s5.json", now=lambda: T0)
+    s.start()
+    s.handle(INTRO)
+    turn = s.handle("Change my plan: add MA2206 as an extra course in semester 4.")
+    reply = turn["reply"]
+    assert "ord-8.4c-overload" in reply and "page 4" in reply and "overloading" in reply
+    assert "checked: no rule is broken" in reply and "MA2206" in reply
+    assert reply.index("ord-8.4c-overload") < reply.index("checked: no rule is broken")
+
+
+def test_an_unwritten_check_file_says_no_check_questions_yet(tmp_path):
+    s = Session("chem_data_s4", session_llm(), profile_path=tmp_path / "q.json", now=lambda: T0)
+    s.start()
+    assert "no check questions yet" in s.handle(INTRO)["reply"]
+
+
+def test_the_change_as_asked_is_checked_by_code_even_if_the_model_proposes_a_valid_swap_first(tmp_path):
+    # the dry run: the model's FIRST proposal was already a valid swap, so the checker never saw the request
+    swap = ok({"plan": {"4": S4 + ["MA2206"], "5": S5 + ["MA3107"]}, "note": "swapped instead"})
+    p = profile()
+    out = RV.revise("Change my plan: add MA2206 as an extra course in semester 4.", plans_for(p)[0], KB, p,
+                    FakeLLM(revise_v1=swap), "revise_v1", now=T0)
+    assert out["accepted"] is True and out["attempts"] == 1
+    asked = out["rejected"][0]
+    assert asked["by"] == "code: the change as asked" and asked["plan"][4] == S4 + ["CS2207", "MA2206"]
+    assert any(f["rule_id"] == "ord-8.4c-overload" and f["page"] == 4 for f in asked["findings"])
+    llm = session_llm()
+    llm.replies["revise_v1"] = swap
+    s = Session("chem_data_s4", llm, profile_path=tmp_path / "asked.json", now=lambda: T0)
+    s.start()
+    s.handle(INTRO)
+    reply = s.handle("Change my plan: add MA2206 as an extra course in semester 4.")["reply"]
+    assert reply.index("ord-8.4c-overload") < reply.index("checked: no rule is broken") and "overloading" in reply

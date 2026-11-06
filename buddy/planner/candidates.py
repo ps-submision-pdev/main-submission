@@ -9,7 +9,7 @@ enumerate_plans(slice, profile, rules, horizon=None) -> {plans, findings, reject
 Order: slots as stored in the slice (semester, then slot), options in the slice's rank order; the
 first slot changes slowest. The same slice and profile always give the same list.
 check_candidate(plan, slice, profile, rules) runs the same checks on any plan (used by tests and revise),
-plus "kb-core-missing" (violation) and "kb-slot-unfilled" (warning).
+plus "kb-core-missing" (violation), "kb-slot-unfilled" and "kb-slot-twice" (warnings).
 """
 from __future__ import annotations
 
@@ -49,8 +49,14 @@ def check_candidate(plan: dict, kb: dict, profile: dict, rules: list) -> list[di
     for sem, codes in sorted(plan.items()):
         found += [finding("kb-core-missing", sem, "violation", f"core course {c} of semester {sem} is missing")
                   for c in programme["core"].get(sem, []) if c not in codes]
-        found += [finding("kb-slot-unfilled", sem, "warning", f"slot {s['slot']} of semester {sem} has no course")
-                  for s in programme["slots"] if s["semester"] == sem and not set(s["options"]) & set(codes)]
+        for s in [s for s in programme["slots"] if s["semester"] == sem]:
+            chosen = [c for c in codes if c in s["options"]]
+            if not chosen:
+                found.append(finding("kb-slot-unfilled", sem, "warning", f"slot {s['slot']} of semester {sem} has no course"))
+            elif len(chosen) > 1:
+                found.append(finding("kb-slot-twice", sem, "warning",
+                                     f"slot {s['slot']} of semester {sem} already has {chosen[0]}; "
+                                     f"{', '.join(chosen[1:])} would be an extra course in the same slot"))
     return found
 
 

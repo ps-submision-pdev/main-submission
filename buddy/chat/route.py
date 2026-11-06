@@ -3,6 +3,9 @@
 route(message, kb, profile, llm, version) -> {intent, by: "code" | "model" | "fallback", reply, call}
 Order:
   a. "/..." is a command                                                    (code)
+  a2. a change word (add, take, also take, drop, remove, replace, swap,
+     change my plan, instead of) together with a slice course, named by code or by its title
+     words ("Numerical Methods"), is change_plan                            (code)
   b. a slice course code plus a lookup word (credits, prerequisite(s), skills, hours, slot,
      semester) is a lookup: the record's field with its source tag            (code, reply set)
   c. a rule id, or "rule" with a clause such as 8.4 or 12.1(a): the rule with page and quote (code, reply set)
@@ -22,6 +25,8 @@ from buddy.prompting import ask
 INTENTS = ("intake", "change_plan", "question", "other")
 CODE = re.compile(r"\b[A-Z]{2}\d{4}\b")
 LOOKUP = re.compile(r"\b(credits?|prerequisites?|skills?|hours?|slot|semester)\b", re.I)
+CHANGE = re.compile(r"\b(also take|take|add|drop|remove|replace|swap|change my plan|instead of)\b", re.I)
+GENERIC = {"introduction", "fundamentals", "basics", "basic", "engineering", "chemical", "process", "course"}
 CLAUSE = re.compile(r"\b(8\.4|12\.1)\s*(?:\(?([a-d])\)?)?", re.I)
 
 
@@ -48,6 +53,18 @@ def lookup(code: str, field: str, record: dict) -> str:
     return f"{code} {record['title']}: {text} {source_tag(record)}"
 
 
+def courses_named(text: str, kb: dict) -> list[str]:
+    """Slice courses a message names: by code, or by title (at least 2 of the title's specific words,
+    or its only one), e.g. "Numerical Methods" -> MA2206 "Introduction to Numerical Methods"."""
+    named = [c for c in CODE.findall(text) if c in kb["courses"]]
+    said = set(re.findall(r"[a-z]{4,}", text.lower()))
+    for code, r in sorted(kb["courses"].items()):
+        title = {w for w in re.findall(r"[a-z]{4,}", r["title"].lower()) if w not in GENERIC}
+        if title and len(title & said) >= min(2, len(title)) and code not in named:
+            named.append(code)
+    return named
+
+
 def code_only(kb: dict) -> dict:
     """Codes the slice holds without a full record, with where they sit."""
     out = {c: f"slot {s['slot']}, semester {s['semester']}" for s in kb["slots"] if not s["full_records"] for c in s["options"]}
@@ -72,6 +89,8 @@ def route(message: str, kb: dict, profile: dict, llm, version: str) -> dict:
     text = message.strip()
     if text.startswith("/"):
         return {"intent": "command", "by": "code", "reply": None, "call": None}
+    if CHANGE.search(text) and courses_named(text, kb):
+        return {"intent": "change_plan", "by": "code", "reply": None, "call": None}
     codes = CODE.findall(text)
     field = LOOKUP.search(text)
     full = [c for c in codes if c in kb["courses"]]
