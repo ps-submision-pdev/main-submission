@@ -557,3 +557,18 @@ Newest entries at the bottom. Commands are run from the repo root.
 - `git pull --rebase origin main` (already up to date), then `git push origin main` (00409c0..da86266). No force.
 - After the push, 93 files are tracked (about 25 MB on disk).
 - Not done by the agent: changing repo visibility or inviting collaborators. The student checks these in GitHub settings.
+
+## 2026-11-06: Co-author lines removed from the pushed commits (student's request)
+
+- The student saw "Claude" as a collaborator on GitHub. All commits were authored, committed and pushed as
+  Pranjal-Kukreja <pranjalkukreja813@gmail.com>; GitHub showed Claude only because the agent had added a
+  "Co-Authored-By: Claude" trailer to each commit message, without asking. The entry above saying so is now outdated.
+- Fix:
+  - local backup branch `backup-before-trailer-removal` (old f3d6332);
+  - `git filter-branch --msg-filter` removed the trailer from the 7 agent commits (00409c0..main);
+  - the student's two build-log commits are untouched;
+  - author and committer are the student; the file tree is identical (checked by tree hash);
+  - new history: e7e241d, a021a78, 040a7a1, 5c7afd7, 47c794c, 096ca43, 2bc2ff7, then this log commit.
+- Pushed with `git push --force-with-lease=main:f3d6332 origin main`: it replaces only the agent's 7 commits,
+  and refuses if the remote had moved. A force push was needed because the history was rewritten.
+- From now on, no co-author or attribution lines in this repo's commits.
