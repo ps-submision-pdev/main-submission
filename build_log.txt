@@ -1,5 +1,5 @@
 checking out what will be stored in database and what will be stored in knowledgebase
-as there is a rule - "No ot her network calls: no out bound calls e x cept to t he configured model
+as there is a rule - "No ot her network calls: no out bound calls except to the model
 provider"
 so i cant really fetch the required department pdf's at run time
 but for the scope of this task I'll just downlooad on basis of persona
@@ -11,4 +11,10 @@ moving onto addidng the persona
 my plan is a code+llm split will fetch from database what needs 
 to be in kb
 
+At scale, the log goes to a tracing service such as Langfuse or OpenTelemetry,
+and the cache moves into Redis. In my build, a JSONL file and a hashed folder do the same jobs.
 
+included and improvised to keep tests(py scripts only) to catch bad plans
+
+At scale, a pipeline would flag missing syllabus text automatically and queue the source for fetching.
+ Here im deciding which departments are worth the download.(for db im talking)
