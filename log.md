@@ -612,3 +612,213 @@ Newest entries at the bottom. Commands are run from the repo root.
 - Both were pushed together so the image is not broken on GitHub. The svg was checked for key-like strings;
   there were none.
 - Committed under the student's name with no co-author line; normal push.
+
+## 2026-11-06: Skills step added to the KB builder
+
+- New `buddy/kb_build/skills.py` and `prompts/skills_v1.md`; `skills_prompt_version: skills_v1` in config/kb_build.yaml.
+  - One call per build for all full-record courses with text, through buddy/llm.py (cache and token log).
+  - Code drops: a course that was not asked about (an invented code or a no-text course), an empty skill,
+    a repeated skill (lowercase, whitespace collapsed), and more than 6 per course.
+  - Quote found in objectives/outcomes/content/description (lowercase, whitespace collapsed): source inferred
+    0.3. Otherwise llm_inferred 0.3 with quote null. All verified=false.
+  - Courses with no text are not sent: skills [], status "no text, no skills".
+- slice.py stores `courses.<code>.skills` and `skills_status`, and prompt_versions.skills. review.py has a Skills
+  section (quote-checked vs not checked, and proposals not kept), a skills row in the Run table, and skills
+  lines in write_decisions.
+- Tests first: tests/test_skills.py (7: quote found with case and whitespace differences, not found,
+  no-text course, duplicates, invented code and empty skill, max 6, no model) and test_slice.py (+1, and the
+  decision-log test now expects the skills step). 123 tests pass.
+- Real run, chem_data_s4: rank, prerequisites and foundations were cache hits. Skills: 1 call, 16,873 tokens
+  (5,034 prompt + 11,839 completion).
+  - 84 skills for 14 courses (6 each), all 84 quote-checked; 0 dropped.
+  - Spot check: the skill names match their quotes (e.g. MA2206 "Solving systems of linear equations",
+    quote "Numerical Methods for Solving System of Linear Equations: ... LU Decomposition ...").
+  - Finding: that MA2206 skill covers the "linear algebra" weakness, but the foundations step found no option
+    for linear algebra. The foundations prompt sees only the first 240 characters of each description.
+- data/demo/ refreshed from a cache-only rebuild: the slice is byte-identical; the review and decision log
+  (126 lines) are updated; llm_answers/chem_data_s4.skills_v1.json was added. token_summary.md was not
+  recreated (the student keeps that table in the README only).
+- Not done: README token table not refreshed (it no longer includes the skills call); not committed (waiting
+  for the student). The new untracked git_organisation_link.txt (the student's) was not touched.
+
+## 2026-11-06: Stage 2 (chat buddy) not started: stage 1 is missing
+
+- The student asked for stage 2 (router, intake, choose, revise, answer, terminal chat, context rule, tests, demo
+  session), with a code-first router change: "/" commands, slice lookups, rule lookups and first-message intake
+  are handled by code; the model is called only when none applies.
+- Per the student's instruction ("If stage 1 is not there, stop and tell me"), the agent checked first.
+  buddy/profile.py, buddy/skip.py, buddy/checks.py, buddy/planner/candidates.py, render.py, buddy/context.py,
+  buddy/prompts/ and config/buddy.yaml do not exist. build_context, load_profile, Profile and enumerate_plans
+  were not found in any file, branch or stash.
+- Nothing was written for stage 2. Waiting for stage 1 (or its spec) from the student.
+
+## 2026-11-06: Stage 1: plan part without a model (profile, skip, checks, planner, render, context)
+
+- config/trust.yaml: `skip_threshold: 0.7` added. `tested: 0.7` was already there (under evidence), so it was not
+  duplicated. Existing values were kept.
+- .gitignore: data/profile/ added (personal data).
+- New buddy/profile.py: facts {id, field, value, source, trust (from config), time}.
+  - cpi and grade:<code> are single-valued; passed, known_topic, weakness, interest and goal are many-valued.
+  - Higher trust wins; at equal trust the newer wins; the loser goes to history with lost_to.
+  - Functions: load_profile_from_persona (already_done becomes graded "passed" facts: an assumption, stated),
+    add_fact, current, to_rules_profile, supports, save_profile and load_profile.
+- New buddy/skip.py: should_skip skips only if the best supporting trust >= skip_threshold.
+- New buddy/checks.py: grades in code; a pass adds a tested fact (0.7). A check with unwritten questions
+  refuses to grade.
+- New data/checks/basic_python.json: format-only stub (3 empty questions, pass_mark 2). The student writes them.
+- buddy/rules.py: new KB check "kb-already-passed" (a planned course already passed). Test first in test_rules.py.
+- New buddy/planner/candidates.py: enumerate_plans gives core plus one option per slot, kept if there is no
+  violation; fixed order (slot, then slice rank; the first slot changes slowest).
+  - Also returns warnings, rejected combinations with findings, and missing slice fields.
+  - check_candidate(plan, ...) runs the same checks on any plan.
+- Slice change: the slice now stores earlier_core (codes of semesters before planning_semester), because rule
+  8.4(a) needs the first-year course list and the slice did not have it.
+  - The enumerator reports the field as missing when it is absent; a test covers this.
+  - The slice was rebuilt from the LLM cache (0 model attempts). data/demo copies were refreshed and are
+    byte-identical to the rebuilt files.
+- New buddy/planner/render.py: per course it shows credits, contact hours, "checked, source page N", the model
+  reason tagged "model guess, unverified", and a "because" line with fact ids, source and trust. Warnings come
+  from the findings.
+- New buddy/context.py: build_context returns {profile: current non-passed facts, plans: lettered with electives'
+  skills, rules: id/text/clause/page}. The docstring lists what is in and what is out (history, turns,
+  plan versions, quotes, raw text).
+- Tests first: test_profile.py (6), test_skip.py (5), test_planner.py (10), test_rules.py (+1). 145 tests pass.
+- Printout for chem_data_s4 (no model call): 4 valid plans A-D, 0 rejected combinations, no missing fields.
+  - Rejected example: S5 core + MA3107 + CS3106 at CPI 6.4 gives ord-8.4c-overload (ordinance 8.4(c), page 4).
+  - Skip "basic Python": false before a check (f21, self_declared 0.4). True after a passed EXAMPLE check
+    (test-only questions, not the student's): new fact f29, tested 0.7.
+- Found and raised: core "prerequisites passed" lines rest on slice prerequisite edges, most of which are model
+  edges (inferred, 0.3). The line shows the graded passed fact but not that the edge itself is a model guess.
+- Not committed (waiting for the student).
+
+## 2026-11-06: Stage 2: chat buddy (router, intake, choose, revise, answer, terminal session, demo)
+
+- Read stage 1 first; its real names are used (profile.add_fact/current/to_rules_profile/add_plan_version, skip.should_skip,
+  checks.load_check/grade/record_check, candidates.enumerate_plans/check_candidate, render.render_plan,
+  context.build_context).
+- New config/buddy.yaml (prompt versions, recent_turns 6, max_revise_attempts 2), buddy/prompts/{route,intake,
+  choose,revise,answer}_v1.md, and buddy/prompting.py: `ask()` is the one way to call the model; it goes through
+  llm.ask_json (temperature 0) and never raises.
+- buddy/chat/route.py, code first:
+  - a "/" command; a slice code plus a lookup word (record with source tag); a rule id or "rule" plus a clause
+    (rule with page and quote);
+  - added by the agent: a code not in the slice gives "not in my knowledge base", and a code held only as a code
+    gives "I only have its code". This was needed for "unknown course makes no model call";
+  - the first message of a new profile is intake; otherwise route_v1, with the label checked; on failure "?"
+    means question, otherwise other.
+- buddy/chat/intake.py: field, value and quote are checked against the message.
+  - Kept facts are self_declared, with the quote stored on the student's own fact (bug caught while writing:
+    a losing CPI claim must not put its quote on the graded fact).
+  - A repeated statement adds nothing.
+- buddy/planner/choose.py: the letter, codes, fact ids and why are checked; a bad letter or failed call gives plan A,
+  "default plan: the model was not available".
+- buddy/planner/revise.py: at most 2 proposals; check_candidate on each.
+  - Accepted plans become a plan version (profile.add_plan_version).
+  - Otherwise: plain findings (rule id, page, quote) and the nearest valid plan (fewest elective differences,
+    first tie), offered but not saved.
+- candidates.check_candidate also adds "kb-core-missing" (violation) and "kb-slot-unfilled" (warning), because
+  a model could drop a core course and rules.check_plan would not notice.
+- buddy/chat/answer.py: code finds up to 3 best-matching slice courses. None: "not in my knowledge base", no call.
+  The model answers from those records only; code appends the source tags and flags codes outside the slice.
+- buddy/chat/cli.py (Session) and buddy/__main__.py: `python3 -m buddy chat --persona <id> [--reset]`; loads .env
+  in-process.
+  - A new profile starts from the persona's graded record only; everything said comes via intake.
+  - /plan, /profile, /tokens, /quit. The profile is saved every turn; the last 6 turns are kept for the router only.
+  - A model failure prints a short notice and uses the code fallback.
+- buddy/context.py docstring: the chat-wide context rule (who sees what; only the router sees recent turns).
+- Tests first: tests/test_chat.py (15, fake model, plus real LLMClient with a fake LiteLLM for broken JSON,
+  timeout and rate limit).
+  - One test setup was wrong (its profile already held "basic Python"); it now starts from an empty profile,
+    as a session does.
+  - 160 tests pass.
+- Smoke test of the real CLI with LLM_MODEL empty (no network): fallbacks plus code answers worked; 0 tokens
+  for the lookup and rule turns.
+- Demo (scripts/demo_session.py, real model; own profile file data/profile/chem_data_s4.demo.json, deleted
+  afterwards) wrote data/demo/session_chem_data_s4.md.
+  - 6 calls, 7,686 tokens, 0 fallbacks; turns: 1 code, 3 model.
+  - (b) skipped: data/checks/basic_python.json still has no questions (the student writes them).
+- Problems found in the demo (not fixed; raised with the student):
+  1. "Can I also take Numerical Methods this semester?" was routed by the model as a question, not change_plan.
+     So answer_v1 replied that MA2206 "is offered this semester", without any rule check. Adding it as an
+     extra course would break 8.4(c).
+  2. Intake stored the known topic as "Python", not "basic Python", so the check file basic_python.json was not
+     found ("no check questions for it").
+  3. Intake's weakness "maths" does not match the slice's foundation weaknesses (probability, statistics, ...), so
+     "because" lines say "no profile fact links to this course".
+- Not committed.
+
+## 2026-11-06: Research experiment (A/B/C): Step 0 only, waiting for go-ahead
+
+- Read log.md, Research/README.md and Research/CLAUDE_CODE_PROMPT.md. Research/ holds only those two files; it is
+  not a git repo yet and is untracked in the mini-project repo (not yet ignored). The student's prompt overrides
+  CLAUDE_CODE_PROMPT.md where they differ.
+- Facts checked from the data:
+  - 4 of the 14 slice courses have a stated (database) prerequisite: CB3101, CB3103, CB3104, CB3105.
+    5 explicit edges. That is fewer than 5 courses, so edge metrics must be reported as counts, not percentages.
+  - The A slice also has 9 model edges (inferred, quote found).
+  - temperature = 0 (buddy/llm.py).
+  - build_slice passes one `llm` to all four steps, so they cannot be switched independently yet:
+    one config flag per step is needed.
+  - There is no closure step yet. Edges point into the slice or already_done; nothing is pulled in.
+  - No Research/gold_chem_data_s4.json, so the experiment runs in agreement mode.
+  - A's logged real cost is 44,830 tokens (rank_v2 5,023 + prereq 18,116 + foundations 4,818 + skills 16,873), not
+    about 41k. The 41,339 in the README was before the skills step and included rank_v1 and the 51-option preview.
+- Nothing written yet; plan shown to the student.
+
+## 2026-11-06: Research experiment A/B/C run (agreement mode)
+
+- Mini-project changes, test first:
+  - config/kb_build.yaml gets `use_model: {rank, prerequisites, skills, foundations}` (all true = unchanged
+    A); build_slice passes llm or None per step and records `use_model` in the slice.
+  - New test in tests/test_slice.py. 161 mini-project tests pass.
+  - .gitignore: /Research/ (Research/ is the student's separate repo).
+- New in Research/experiments/ (imports the mini-project `buddy` package, run from the mini-project root):
+  - closure.py: deterministic closure over stated database prerequisites, with a visited set; codes not in
+    the db are flagged as unresolved;
+  - completeness.py: reuses buddy/kb_build/checks.py and adds missing_field, unresolved and no_source checks;
+    exit 1 on any gap (checked: 0 on A's slice, 1 on a copy with one credits field removed);
+  - run.py: A once from the main cache, with its cost read from the token log; B twice, with a byte-identity
+    check; C three times, each with a fresh cache folder under Research/runs/cache/C<n>, so each is a real call.
+    Writes Research/results.json, Research/results.md and Research/runs/*.slice.json;
+  - tests/test_experiments.py (4: unknown id rejected, closure ends on a cycle, the checker catches a missing
+    field and unsourced facts, and A/B/C run with a fake model). 165 tests pass in total.
+- Results (model nemotron-3-ultra-550b-a55b:free, temperature 0, agreement mode, no gold KB):
+  - A: 4 calls, 15,279/29,551 tokens (from the log: rank 5,023, prereq 18,116, skills 16,873, foundations 4,818);
+    options CS2207, MA2206, MA3107, CS3106; 14 edges (5 stated + 9 model); 84 skills; 6 foundations.
+  - B: 0 calls; the 2 runs are byte-identical; options CE3105, CS2207, MA2206, MA3107 (alphabetical fallback
+    where no keyword matched).
+  - C: 1 call each, 2,097 in / 2,053, 2,349, 2,780 out; wall 91.8, 52.6 and 102.5 s; all 3 runs chose A's options.
+  - Jaccard (options): A-C 1.0, A-B 0.6, B-C 0.6, C-C 1.0. Records: 1.0 / 0.867. Edges are counts only (4 of 14
+    courses have stated prerequisites).
+  - Closure added nothing; 0 gaps in every variant; provenance 112/112 (A) and 19/19 (B, C).
+- Research/README.md results section filled in from results.json, with an honest reading: the hypothesis is
+  half supported (C = A at about a tenth of the tokens; B is not equal to C). C = A is partly by construction
+  (same rank prompt). Agreement is not accuracy. The paper table is unchanged.
+- Note: the main slice on disk has not been rebuilt since the use_model flag was added; the next rebuild adds
+  `use_model` to it (and changes its input hash).
+- Not committed, not pushed.
+
+## 2026-11-06: Research/README.md rewritten as paragraphs
+
+- The student found the README hard to read: the 7-column paper table rendered as narrow columns. At the student's
+  request it was rewritten as headings, paragraphs and short lists, with no tables. This overrides the earlier
+  "do not change the paper table".
+- The paper text was kept word for word (checked by code: every sentence of the old table is present). Each old
+  column became a subheading; the 7 implementable points became a numbered list.
+- The experiment plan and full-scale-vs-mini-project tables became short lists. The results became paragraphs per
+  variant, an agreement paragraph and a reading. The numbers are unchanged (from results.json); full tables
+  stay in Research/results.md.
+
+## 2026-11-06: Research folder pushed to its own repo
+
+- Repo: https://github.com/ps-submision-pdev/Research-principles-and-implementations. It was empty before
+  (`git ls-remote` showed no branches).
+- Before pushing: a key-pattern scan of Research/ found nothing; there is no .env in Research/.
+  Research/.gitignore was added (__pycache__/, *.pyc, .DS_Store, .env, .env.*).
+- `git init -b main` in Research/, one commit 06edc69 "Add KnowPlan notes and A/B/C experiment with results"
+  (Pranjal-Kukreja <pranjalkukreja813@gmail.com>, no co-author line), `git push -u origin main` (new branch, no force).
+  20 files: README.md, CLAUDE_CODE_PROMPT.md, experiments/ (code + tests), results.json, results.md, runs/ (slices,
+  raw model answers, call logs).
+- The mini-project repo still ignores /Research/ and was not touched; the mini-project changes remain uncommitted.
+- Note: Research/experiments imports the mini-project `buddy` package, so it runs only from inside the mini-project folder
+  (the README says so).
