@@ -900,3 +900,8 @@ Newest entries at the bottom. Commands are run from the repo root.
 - Pushed to the main repo with the dry-run fixes as a separate commit. 171 tests pass. The key scan matched only
   the known test fakes; .env, data/logs and data/profile are ignored. No co-author lines; chat.py, test.py and
   git_organisation_link.txt were left untracked.
+
+## 2026-11-06: make_it_sold.md renamed to make_it_solid.md
+
+- The student confirmed the intended name. `git mv` was used, so the content is unchanged. Pushed under the
+  student's name with no co-author line.
