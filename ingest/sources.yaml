@@ -1,0 +1,71 @@
+# Catalogue of public IIT Patna documents the ingest pipeline may download.
+# To add a source, add an entry. Nothing else in the code mentions a URL.
+#
+# id         used as the file name (data/raw/<id>.<format>): lowercase letters, digits, underscore
+# format     pdf (default) | docx
+# kind       syllabus | ordinance | curriculum
+# level      UG | PG
+#
+# These entries were collected by hand from the department pages. A later
+# stage (discover) should generate this file instead.
+
+sources:
+  - id: cse_btech
+    url: "https://academics.iitp.ac.in/revised_syllabus/syllabys/CSE_B.Tech._Program_Done.pdf"
+    kind: syllabus
+    department: Computer Science and Engineering
+    programme: B.Tech. Computer Science and Engineering
+    level: UG
+    found_on: "https://www.iitp.ac.in/departments/computer-science-engineering"
+
+  - id: cse_aids_btech
+    url: "https://academics.iitp.ac.in/revised_syllabus/syllabys/CSE_AI&DS_B.Tech._Program_Done.pdf"
+    kind: syllabus
+    department: Computer Science and Engineering
+    programme: B.Tech. Artificial Intelligence and Data Science
+    level: UG
+    found_on: "https://www.iitp.ac.in/departments/computer-science-engineering"
+
+  - id: math_btech_mc
+    url: "https://academics.iitp.ac.in/revised_syllabus/syllabys/Math_B.Tech._Program_(M&C)_Done.pdf"
+    kind: syllabus
+    department: Mathematics
+    programme: B.Tech. Mathematics and Computing
+    level: UG
+    found_on: "https://www.iitp.ac.in/departments/mathematics"
+
+  - id: btech_ordinance
+    url: "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+    kind: ordinance
+    department: Academic Affairs
+    programme: B.Tech. (all)
+    level: UG
+    found_on: "https://academics.iitp.ac.in/"
+    notes: "File name says 2019 onwards. The curriculum is NEP-2020, so some rules may be out of date."
+
+  - id: btech_program_nep2020
+    url: "https://academics.iitp.ac.in/images/syllabus/B.%20Tech.%20Program.pdf"
+    kind: syllabus
+    department: Academic Affairs (several departments)
+    programme: B.Tech. (NEP-2020 programme document, several branches)
+    level: UG
+    found_on: "web search result, 2026-11-06"
+    notes: "Not yet downloaded or checked. Search snippets suggest it holds semester tables and syllabi for Chemical and Biochemical Engineering (CB codes), Chemistry (CH), Electrical, ECE, CS, Materials and Physics. May overlap with curriculum_nep2020."
+
+  - id: curriculum_nep2020
+    url: "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+    kind: curriculum
+    department: Academic Affairs
+    programme: B.Tech. (all branches, NEP-2020, common first year)
+    level: UG
+    found_on: "https://academics.iitp.ac.in/revised_curriculum/"
+
+  - id: cbe_btech
+    url: "https://academics.iitp.ac.in/revised_syllabus/B.TECH-CSE/sem-1/pdf/CBE_B.%20Tech.%20Program_Done.docx"
+    format: docx
+    kind: syllabus
+    department: Chemical and Biochemical Engineering
+    programme: B.Tech. Chemical Engineering
+    level: UG
+    found_on: "https://academics.iitp.ac.in/revised_syllabus/B.TECH-CSE/sem-1/chemicalengineering.html"
+    notes: "Reached from https://www.iitp.ac.in/departments/chemical-engineering. Only a Word file is published, no PDF. The page's own link is missing the /revised_syllabus prefix."

@@ -1,0 +1,46 @@
+{
+  "btech_ordinance": {
+    "bytes": 1856294,
+    "fetched_at": "2026-11-05T08:15:02+00:00",
+    "sha256": "a13632d161cb150e96a638f7160aa0d0440dee1ee889faa48c8081dd9c376ee7",
+    "url": "https://academics.iitp.ac.in/images/regulation/B.Tech_Ordinance_2019_onwards.pdf"
+  },
+  "btech_program_nep2020": {
+    "bytes": 981275,
+    "fetched_at": "2026-11-05T19:32:35+00:00",
+    "format": "pdf",
+    "sha256": "af37ff786c6e28839c034577213381412b4a641306bccfe76dab8725267a6a27",
+    "url": "https://academics.iitp.ac.in/images/syllabus/B.%20Tech.%20Program.pdf"
+  },
+  "cbe_btech": {
+    "bytes": 219930,
+    "fetched_at": "2026-11-05T19:32:36+00:00",
+    "format": "docx",
+    "sha256": "2de70fc863b333e866975ef1424415069db7449b6f97db1f30797ba174c05345",
+    "url": "https://academics.iitp.ac.in/revised_syllabus/B.TECH-CSE/sem-1/pdf/CBE_B.%20Tech.%20Program_Done.docx"
+  },
+  "cse_aids_btech": {
+    "bytes": 1171131,
+    "fetched_at": "2026-11-05T08:14:59+00:00",
+    "sha256": "ba2ba12da4f9788e5921f44bdedbf6f402207877db1cae7ca9c3903851005b8a",
+    "url": "https://academics.iitp.ac.in/revised_syllabus/syllabys/CSE_AI&DS_B.Tech._Program_Done.pdf"
+  },
+  "cse_btech": {
+    "bytes": 1270928,
+    "fetched_at": "2026-11-05T08:14:58+00:00",
+    "sha256": "2f59bde6030e89c87b091d68cf570af68d992c263068817b8a725a689d6b0a1d",
+    "url": "https://academics.iitp.ac.in/revised_syllabus/syllabys/CSE_B.Tech._Program_Done.pdf"
+  },
+  "curriculum_nep2020": {
+    "bytes": 3649669,
+    "fetched_at": "2026-11-05T08:15:03+00:00",
+    "sha256": "94e5a26397e14897ae87898dbc49dbb7de67899aec0b7b4195cecb1a06378c4b",
+    "url": "https://academics.iitp.ac.in/revised_curriculum/Revised_Curriculumn.pdf"
+  },
+  "math_btech_mc": {
+    "bytes": 773312,
+    "fetched_at": "2026-11-05T08:15:01+00:00",
+    "sha256": "1f1ac310ba27c62948f220956f4392f86a105bb963da7778329abf6b3a0a285f",
+    "url": "https://academics.iitp.ac.in/revised_syllabus/syllabys/Math_B.Tech._Program_(M&C)_Done.pdf"
+  }
+}

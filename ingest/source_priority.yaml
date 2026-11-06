@@ -1,0 +1,15 @@
+# Which source wins when sources disagree on a field. Used only by ingest/resolve.py.
+# Earlier in the list = higher priority. Every course source in sources.yaml must be listed.
+# The losing claims are never dropped: resolve keeps them and sets conflict: true.
+priority:
+  - curriculum_nep2020      # institute-wide NEP-2020 curriculum; its codes match the department syllabi
+  - cbe_btech               # the persona's home department syllabus (docx)
+  - cse_btech
+  - cse_aids_btech
+  - math_btech_mc
+  - btech_program_nep2020   # last: uses different codes for many electives (DE-I CB3211-CB3214 vs CB3206-CB3209)
+
+# Owner department is read only from these documents (each prints "Programme from the Department of X").
+owner_sources:
+  - curriculum_nep2020
+  - btech_program_nep2020
