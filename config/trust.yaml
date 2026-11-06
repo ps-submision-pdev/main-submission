@@ -1,0 +1,15 @@
+# The only place trust numbers live (CLAUDE.md: "Trust numbers live in one config file, nowhere else").
+# 0 = no trust, 1 = full trust. Everything that carries a trust number reads it from here.
+
+# Persona evidence, by where the fact came from.
+evidence:
+  graded: 0.9          # an official grade or CPI
+  tested: 0.7          # a quiz or test the buddy ran
+  self_declared: 0.4   # the student said so
+
+# Knowledge-base facts, by how they were obtained.
+kb:
+  explicit: 0.9        # printed in the syllabus/curriculum (e.g. a Pre-requisite field naming a code)
+  inferred: 0.3        # proposed by the model AND backed by a verbatim quote that code found
+  llm_inferred: 0.3    # model judgment (skills, foundations) backed by a verbatim quote that code found
+  self_declared: 0.4   # the student's own claim (likely_known topics)

@@ -1,0 +1,25 @@
+{
+ "persona_id": "chem_ml_demo",
+ "synthetic": true,
+ "programme_id": "cbe_btech",
+ "year": 3,
+ "planning_semester": 5,
+ "goal_text": "I am a chemical engineering student finishing my second year. I must complete my normal coursework, but I want to learn machine learning and use it on chemical process data. My maths is weak.",
+ "goal_keywords": ["machine learning", "data", "artificial intelligence", "statistics", "optimization", "modeling", "simulation", "python"],
+ "weaknesses": ["probability", "statistics", "linear algebra", "differential equations"],
+ "constraints": {"credit_cap": null, "hours_per_week": null, "not_together": []},
+ "already_done": [
+  "MA1101", "CS1101", "PH1101", "CE1101", "EE1101", "HS1101",
+  "MA1201", "CS1201", "CH1201", "ME1201", "ME1202", "IK1201",
+  "CB2101", "CB2102", "CB2103", "CB2104", "CB2105",
+  "CB2201", "CB2202", "CB2203", "CB2204", "CB2205"
+ ],
+ "known_topics": ["basic Python", "numerical methods"],
+ "evidence": [
+  {"field": "cpi", "value": 6.4, "source": "graded", "trust": 0.9},
+  {"field": "grade:MA1201", "value": "DD", "source": "graded", "trust": 0.9},
+  {"field": "known_topic", "value": "basic Python", "source": "self_declared", "trust": 0.4},
+  {"field": "known_topic", "value": "numerical methods", "source": "self_declared", "trust": 0.4},
+  {"field": "weakness", "value": "probability and statistics", "source": "self_declared", "trust": 0.4}
+ ]
+}

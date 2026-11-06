@@ -1,0 +1,20 @@
+# Settings for buddy/kb_build (the KB builder). Trust numbers are not here: they live in config/trust.yaml.
+
+# How many semesters, counted from the persona's planning_semester, get FULL course records and a
+# ranking call. 2 with planning_semester 5 means semesters 5 and 6. Later slots are kept as
+# {slot, semester, options: [codes]} only, and later core as {semester: [codes]}.
+kb_horizon_semesters: 2
+
+# How many options each elective slot inside the horizon keeps in the slice (the model's top N).
+options_per_slot: 2
+
+# The brief asks for a knowledge base of 8-15 real courses. The KB checks warn (never trim) outside this.
+kb_min_courses: 8
+kb_max_courses: 15
+
+# Which rank prompt the builder uses (files in buddy/kb_build/prompts/). rank_v1 sends keyword hints,
+# rank_v2 does not. rank_v1 is kept for comparison.
+rank_prompt_version: rank_v2
+
+# How much of a course's description (or objectives) the rank and foundation prompts show per course.
+description_chars: 240

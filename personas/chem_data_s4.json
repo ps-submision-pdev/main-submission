@@ -1,0 +1,24 @@
+{
+ "persona_id": "chem_data_s4",
+ "synthetic": true,
+ "programme_id": "cbe_btech",
+ "year": 2,
+ "planning_semester": 4,
+ "goal_text": "I am a second-year chemical engineering student. I must complete my core courses, but I want to build computing and data skills I can use on process data and simulations. My maths is weak.",
+ "goal_keywords": ["programming", "data", "computing", "numerical methods", "modelling", "simulation", "statistics", "visualization"],
+ "weaknesses": ["probability", "statistics", "linear algebra", "differential equations"],
+ "constraints": {"credit_cap": null, "hours_per_week": null, "not_together": []},
+ "already_done": [
+  "MA1101", "CS1101", "PH1101", "CE1101", "EE1101", "HS1101",
+  "MA1201", "CS1201", "CH1201", "ME1201", "ME1202", "IK1201",
+  "CB2101", "CB2102", "CB2103", "CB2104", "CB2105", "HS2113"
+ ],
+ "known_topics": ["basic Python", "data structures"],
+ "evidence": [
+  {"field": "cpi", "value": 6.4, "source": "graded", "trust": 0.9},
+  {"field": "grade:MA1201", "value": "DD", "source": "graded", "trust": 0.9},
+  {"field": "known_topic", "value": "basic Python", "source": "self_declared", "trust": 0.4},
+  {"field": "known_topic", "value": "data structures", "source": "self_declared", "trust": 0.4},
+  {"field": "weakness", "value": "probability and statistics", "source": "self_declared", "trust": 0.4}
+ ]
+}
