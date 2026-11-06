@@ -604,3 +604,11 @@ Newest entries at the bottom. Commands are run from the repo root.
   "my keyword hints" became "the keyword hints"; "it gives you... you tested" became "it gives... the prompt
   design was tested". The chat-only last sentence was left out.
 - The generated token table below it is unchanged. Committed and pushed under the student's name, no co-author line.
+
+## 2026-11-06: README architecture image pushed
+
+- The student added `![Architecture](docs/architecture.png)` to README.md and a new docs/ folder
+  (architecture.png and architecture.svg).
+- Both were pushed together so the image is not broken on GitHub. The svg was checked for key-like strings;
+  there were none.
+- Committed under the student's name with no co-author line; normal push.

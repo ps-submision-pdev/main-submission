@@ -8,6 +8,8 @@ coursework, wants to build computing and data skills for process data and simula
 The buddy reads only a small knowledge base (KB). While it runs, it never goes to the web. The only outside
 call is to the model provider, and that goes through one file, `buddy/llm.py`.
 
+![Architecture](docs/architecture.png)
+
 ## Read these first
 
 | File | What it is |
