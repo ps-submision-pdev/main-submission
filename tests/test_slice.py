@@ -36,6 +36,9 @@ class FakeLLM:
             "prereq_v1": {"prerequisites": [{"course": "MA2206", "prerequisite": "MA1101", "evidence_quote": ""}]},
             "foundations_v1": {"foundations": [{"weakness": "differential equations", "codes": ["MA3107"],
                                                 "reason": "PDE course"}]},
+            "skills_v1": {"skills": [{"course": "CS2207", "skill": "Data visualization", "quote": "VISUALIZATION"},
+                                     {"course": "CS2207", "skill": "Mind reading", "quote": "telepathy"},
+                                     {"course": "ZZ9999", "skill": "Anything", "quote": "x"}]},
         }
         return {"ok": True, "data": replies[prompt_version], "cached": False, "usage": USAGE}
 
@@ -110,9 +113,35 @@ def test_decision_log_has_one_line_per_model_decision(tmp_path):
     kb, extra = build()
     write_decisions(tmp_path / "d.jsonl", extra)
     lines = [json.loads(line) for line in (tmp_path / "d.jsonl").read_text(encoding="utf-8").splitlines()]
-    expected = sum(len(extra[s]["decisions"]) for s in ("rank", "prerequisites", "foundations"))
+    expected = sum(len(extra[s]["decisions"]) for s in ("rank", "prerequisites", "foundations", "skills"))
     assert len(lines) == expected
-    assert {line["step"] for line in lines} == {"rank", "prerequisites", "foundations"}
+    assert {line["step"] for line in lines} == {"rank", "prerequisites", "foundations", "skills"}
     assert all({"step", "said", "verdict", "evidence", "tokens"} <= set(line) for line in lines)
     zz = [line for line in lines if isinstance(line["said"], dict) and line["said"].get("code") == "ZZ9999"]
     assert zz[0]["verdict"] == "dropped:code not in the candidate list"
+
+
+def test_skills_are_in_the_slice_review_and_decision_log(tmp_path):
+    from buddy.kb_build.review import write_decisions
+    kb, extra = build()
+    cs = kb["courses"]["CS2207"]["skills"]
+    assert [(x["skill"], x["source"], x["quote"] is not None) for x in cs] == [
+        ("Data visualization", "inferred", True), ("Mind reading", "llm_inferred", False)]
+    assert kb["courses"]["CS2207"]["skills_status"] == "model" and kb["prompt_versions"]["skills"] == "skills_v1"
+    write_review(tmp_path / "r.md", kb, extra, DB)
+    text = (tmp_path / "r.md").read_text(encoding="utf-8")
+    assert "## Skills" in text and "Data visualization" in text and "Mind reading" in text
+    write_decisions(tmp_path / "d.jsonl", extra)
+    steps = [json.loads(line)["step"] for line in (tmp_path / "d.jsonl").read_text().splitlines()]
+    assert steps.count("skills") == 3
+
+
+def test_model_steps_can_be_switched_off_one_by_one():
+    only_rank = {**SETTINGS, "use_model": {"rank": True, "prerequisites": False, "skills": False, "foundations": False}}
+    kb, extra = build_slice(PERSONA, DB, ENTRIES, RULES, FakeLLM(), only_rank, TRUST)
+    assert kb["rank_source"] == "model" and kb["foundations"] == []
+    assert all(r["skills"] == [] for r in kb["courses"].values())
+    assert all(e["source"] == "explicit" for r in kb["courses"].values() for e in r["prerequisites"])
+    assert kb["use_model"] == only_rank["use_model"]
+    none = {**SETTINGS, "use_model": {k: False for k in ("rank", "prerequisites", "skills", "foundations")}}
+    assert build_slice(PERSONA, DB, ENTRIES, RULES, FakeLLM(), none, TRUST)[0]["rank_source"] == "fallback"

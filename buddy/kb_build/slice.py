@@ -6,8 +6,8 @@ build_slice(persona, db, entries, rules_data, llm, settings, trust_config) -> (s
     extra  what the review report needs (available set, removed list, every model decision)
 write_slice(slice, path)  JSON with sorted keys: the same input and the same cached answers give the same bytes
 
-Order: available -> eligibility -> horizon -> shortlist -> rank -> prerequisites -> foundations -> rules
--> checks. Full course records only for the horizon (core + kept options); later slots are codes only.
+Order: available -> eligibility -> horizon -> shortlist -> rank -> prerequisites -> skills -> foundations
+-> rules -> checks. Full course records only for the horizon (core + kept options); later slots are codes only.
 Everything in the slice has verified=false; the student checks it and sets it true by hand.
 """
 from __future__ import annotations
@@ -24,6 +24,7 @@ from buddy.kb_build.horizon import split_horizon
 from buddy.kb_build.prereqs import PROMPT_VERSION as PREREQ_PROMPT, prerequisites
 from buddy.kb_build.rank import TEXT_FIELDS, rank
 from buddy.kb_build.shortlist import shortlist
+from buddy.kb_build.skills import skills
 
 PROMPT_DIR = Path(__file__).resolve().parent / "prompts"
 
@@ -36,7 +37,7 @@ def provenance(record: dict) -> dict:
     return {"source_id": chosen["source_id"], "page": chosen["page"], "quote": chosen["span"], "url": claim["url"]}
 
 
-def course_record(code: str, db: dict, trust: float, category: str, semester: int, slot, ranked, prereq) -> dict:
+def course_record(code: str, db: dict, trust: float, category: str, semester: int, slot, ranked, prereq, learned) -> dict:
     r = db[code]
     ltpc = r["ltpc"]["value"] or {}
     return {"code": code, "title": r["title"]["value"], "credits": ltpc.get("c"), "l": ltpc.get("l"),
@@ -45,7 +46,7 @@ def course_record(code: str, db: dict, trust: float, category: str, semester: in
             "text_available": any((r[f]["value"] or "").strip() for f in TEXT_FIELDS),
             "source": "database", "trust": trust, "provenance": provenance(r),
             "rank": ranked, "prerequisites": prereq["edges"][code], "prerequisite_status": prereq["status"][code],
-            "skills": [], "verified": False}
+            "skills": learned["skills"][code], "skills_status": learned["status"][code], "verified": False}
 
 
 def input_hash(persona, settings, trust_config, rules_data, db, entries, prompt_versions) -> str:
@@ -57,34 +58,38 @@ def input_hash(persona, settings, trust_config, rules_data, db, entries, prompt_
 
 def build_slice(persona: dict, db: dict, entries: list, rules_data: dict, llm, settings: dict, trust_config: dict):
     kb_trust = trust_config["kb"]
+    use = {step: settings.get("use_model", {}).get(step, True) for step in ("rank", "prerequisites", "skills", "foundations")}
+    model_for = {step: (llm if on else None) for step, on in use.items()}   # None = that step's code-only path
     filtered = filter_available(persona, available_for(persona, entries, db), db)
     available = filtered["available"]
     horizon = split_horizon(available, persona, settings)
     inside = horizon["inside"]
     hints = shortlist(persona, db, inside)
-    ranked = rank(persona, inside, hints, db, llm, settings, settings["rank_prompt_version"])
+    ranked = rank(persona, inside, hints, db, model_for["rank"], settings, settings["rank_prompt_version"])
 
     full = [(c, "core", sem, None, None) for sem, codes in sorted(inside["core"].items()) for c in codes]
     for s in inside["slots"]:
         full += [(i["code"], s["slot_type"], s["semester"], s["slot"], i) for i in ranked["by_slot"][s["slot"]]]
-    prereq = prerequisites([c for c, *_ in full], persona["already_done"], db, llm, kb_trust)
+    prereq = prerequisites([c for c, *_ in full], persona["already_done"], db, model_for["prerequisites"], kb_trust)
+    learned = skills([c for c, *_ in full], db, model_for["skills"], settings["skills_prompt_version"], kb_trust)
     options = [{"code": c, "slot": s["slot"], "semester": s["semester"]} for s in available["slots"] for c in s["options"]]
-    found = foundations(persona, options, db, llm, kb_trust["llm_inferred"], settings["description_chars"])
+    found = foundations(persona, options, db, model_for["foundations"], kb_trust["llm_inferred"], settings["description_chars"])
 
     prompt_versions = {"rank": settings["rank_prompt_version"], "prerequisites": PREREQ_PROMPT,
-                       "foundations": FOUNDATIONS_PROMPT}
+                       "foundations": FOUNDATIONS_PROMPT, "skills": settings["skills_prompt_version"]}
     kb = {
         "persona_id": persona["persona_id"], "built_by": "buddy.kb_build", "verified": False,
         "model": getattr(llm, "model", None) if llm is not None else None, "prompt_versions": prompt_versions,
-        "rank_source": ranked["rank_source"],
+        "rank_source": ranked["rank_source"], "use_model": use,
         "input_hash": input_hash(persona, settings, trust_config, rules_data, db, entries, prompt_versions),
         "horizon": horizon["semesters"], "window": available["window"],
         "core": {str(sem): codes for sem, codes in sorted(inside["core"].items())},
         "later_core": {str(sem): codes for sem, codes in sorted(horizon["later_core"].items())},
+        "earlier_core": {str(sem): codes for sem, codes in sorted(available["core_before_window"].items())},
         "slots": [{"slot": s["slot"], "semester": s["semester"], "full_records": True,
                    "options": [i["code"] for i in ranked["by_slot"][s["slot"]]]} for s in inside["slots"]]
                  + [{**s, "full_records": False} for s in horizon["later_slots"]],
-        "courses": {c: course_record(c, db, kb_trust["explicit"], cat, sem, slot, item, prereq)
+        "courses": {c: course_record(c, db, kb_trust["explicit"], cat, sem, slot, item, prereq, learned)
                     for c, cat, sem, slot, item in full},
         "foundations": found["items"],
         "rules": [{**r, "verified": False} for r in rules_data["rules"]],
@@ -94,7 +99,7 @@ def build_slice(persona: dict, db: dict, entries: list, rules_data: dict, llm, s
                     "course_exists": checks.check_course_exists(kb, db),
                     "slot_membership": checks.check_slot_membership(kb, available)}
     extra = {"available": available, "removed": filtered["removed"], "unplaced": available["unplaced"],
-             "rank": ranked, "prerequisites": prereq, "foundations": found}
+             "rank": ranked, "prerequisites": prereq, "foundations": found, "skills": learned}
     return kb, extra
 
 

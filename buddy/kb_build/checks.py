@@ -21,7 +21,8 @@ def check_size(count: int, settings: dict) -> list[str]:
 
 def referenced_codes(kb: dict) -> list[tuple[str, str]]:
     """Every (code, where) the slice refers to: core, slot options, records, prerequisites, foundations."""
-    out = [(c, "core") for codes in list(kb["core"].values()) + list(kb["later_core"].values()) for c in codes]
+    out = [(c, "core") for codes in list(kb["core"].values()) + list(kb["later_core"].values())
+           + list(kb.get("earlier_core", {}).values()) for c in codes]
     out += [(c, f"slot {s['slot']}") for s in kb["slots"] for c in s["options"]]
     out += [(c, "courses") for c in kb["courses"]]
     out += [(e["code"], f"prerequisite of {c}") for c, r in kb["courses"].items() for e in r["prerequisites"]]

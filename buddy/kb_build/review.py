@@ -23,7 +23,7 @@ def table(header: list, rows: list) -> list[str]:
 def calls(extra: dict) -> list:
     rows = []
     for step, part in (("rank", extra["rank"]), ("prerequisites", extra["prerequisites"]),
-                       ("foundations", extra["foundations"])):
+                       ("skills", extra["skills"]), ("foundations", extra["foundations"])):
         u = part["usage"]
         made = bool(part["decisions"]) and not any(d["verdict"] == "skipped" for d in part["decisions"])
         how = "no call" if not made and u["attempts"] == 0 else "cache hit" if u["attempts"] == 0 else "model call"
@@ -85,6 +85,20 @@ def write_review(path, kb: dict, extra: dict, db: dict) -> None:
     out += [f"Model proposals not kept ({len(dropped)}):", ""]
     out += table(["proposal", "verdict"], [[d["said"], d["verdict"]] for d in dropped])
 
+    out += ["## Skills", "", "Quote-checked = the quote was found in the course text (source inferred); "
+            "not checked = no quote found (llm_inferred, quote null). All trust 0.3, verified=false.", ""]
+    rows = []
+    for code, r in kb["courses"].items():
+        checked = "; ".join(f"{x['skill']} (\"{x['quote']}\")" for x in r["skills"] if x["source"] == "inferred")
+        unchecked = "; ".join(x["skill"] for x in r["skills"] if x["source"] == "llm_inferred")
+        if r["skills_status"] != "model":
+            checked = r["skills_status"]
+        rows.append([code, r["title"], checked, unchecked])
+    out += table(["code", "title", "quote-checked skills", "not checked (llm_inferred)"], rows)
+    dropped = [d for d in extra["skills"]["decisions"] if not d["verdict"].startswith("accepted")]
+    out += [f"Skill proposals not kept ({len(dropped)}):", ""]
+    out += table(["proposal", "verdict"], [[d["said"], d["verdict"]] for d in dropped])
+
     out += ["## Foundations for weaknesses (llm_inferred)", ""]
     out += table(["weakness", "code", "title", "slot", "semester", "reason", "trust"],
                  [[f["weakness"], f["code"], db[f["code"]]["title"]["value"], f["slot"], f["semester"], f["reason"], f["trust"]]
@@ -110,6 +124,6 @@ def write_decisions(path, extra: dict) -> None:
     """The decision log: one JSON line per model decision, accepted or not, in step order.
     Each line: step, said (the model's item as given), verdict (code's verdict), evidence, tokens (of that call)."""
     lines = [json.dumps(d, ensure_ascii=False, sort_keys=True)
-             for step in ("rank", "prerequisites", "foundations") for d in extra[step]["decisions"]]
+             for step in ("rank", "prerequisites", "skills", "foundations") for d in extra[step]["decisions"]]
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -49,7 +49,51 @@
    },
    "rank": null,
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Ability to understand size measurement and classification methods and systems.",
+     "skill": "Size measurement and classification",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Ability to understand fluid particle systems and equipment.",
+     "skill": "Fluid particle systems",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Ability to select suitable size reduction equipment, solid-solid separation method system.",
+     "skill": "Selection of size reduction equipment",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Ability to analyse separation, filtration processes and solid-liquid separation equipment and systems.",
+     "skill": "Analysis of separation and filtration processes",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Principles of crushing and grinding; Laws of crushing and grinding (Rittinger’s Law, Kick’s Law, Bond’s Law);",
+     "skill": "Principles of crushing and grinding",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Principles of filtration: Ergun Equation and Kozeny-Carman Equation; Filtration equipment;",
+     "skill": "Filtration principles and equipment",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -85,7 +129,51 @@
    },
    "rank": null,
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "To develop numerical solutions to various mass transfer processes.",
+     "skill": "Numerical solutions for mass transfer",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Identify, quantify and calculate various parameters relevant to simple mass transfer operations.",
+     "skill": "Identify, quantify and calculate mass transfer parameters",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design of packed tower;",
+     "skill": "Design of packed tower",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "McCabe-Thiele and Ponchon-Savarit methods;",
+     "skill": "McCabe-Thiele and Ponchon-Savarit methods",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Gas absorption and stripping;",
+     "skill": "Gas absorption and stripping",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Liquid-liquid extraction (LLE); Solvent selection; Equipment for LLE;",
+     "skill": "Liquid-liquid extraction",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -121,7 +209,51 @@
    },
    "rank": null,
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "To make an expert of enzymes in kinetic analysis of biochemical reactions",
+     "skill": "Kinetic analysis of biochemical reactions",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Ability to understand growth patterns and kinetics of microbe.",
+     "skill": "Microbial growth kinetics",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Acquire knowledge of enzyme-catalyzed reaction and inhibition mechanisms.",
+     "skill": "Enzyme-catalyzed reaction and inhibition mechanisms",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design and analysis of bioreactor;",
+     "skill": "Design and analysis of bioreactor",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "estimation of KLa in the fermentation process,",
+     "skill": "Estimation of KLa in fermentation",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Biochemical product recovery and separation: membrane separation process (reverse osmosis, dialysis, ultrafiltration, chromatographic methods).",
+     "skill": "Membrane separation for product recovery",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -157,7 +289,51 @@
    },
    "rank": null,
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Mathematical modeling of different process systems and its dynamic behavior under various disturbances.",
+     "skill": "Mathematical modeling of process systems",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Concept of stability, Routh test;",
+     "skill": "Stability analysis using Routh test",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Root locus; Poles and zeros;",
+     "skill": "Root locus analysis",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Zigler-Nichols approach;",
+     "skill": "Ziegler-Nichols tuning",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Frequency response: Design of controllers, Bode stability criterion;",
+     "skill": "Frequency response and Bode stability criterion",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Advanced control strategies: cascade control, ratio control and feed forward control designs.",
+     "skill": "Advanced control strategies",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -193,7 +369,51 @@
    },
    "rank": null,
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Ability to read and analyze chemical reaction data, and generate rate expressions.",
+     "skill": "Analyze reaction data and generate rate expressions",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Designing experiments involving chemical reactions with multiple reactants and products, recycle reactors.",
+     "skill": "Design experiments for chemical reactions",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Develop skills to choose the right reactor among single, multiple, recycle reactor, etc. for isothermal/ non-isothermal/ adiabatic reactions.",
+     "skill": "Select appropriate reactor type",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Interpretation of batch reactor data;",
+     "skill": "Interpretation of batch reactor data",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design of parallel reactions and distribution of products;",
+     "skill": "Design of parallel reactions and product distribution",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Continuous stirred tank reactor (CSTR); Performance equations;",
+     "skill": "Performance equations for CSTR and plug flow reactors",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -229,7 +449,51 @@
    },
    "rank": null,
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "To select appropriate operating conditions for unit operations involving mass transfer.",
+     "skill": "Select operating conditions for mass transfer operations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "To calculate yield and efficiency parameters for unit operations involving mass transfer.",
+     "skill": "Calculate yield and efficiency parameters",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Cooling towers: design of tower, tower height;",
+     "skill": "Design of cooling towers",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "crystallization equipment design;",
+     "skill": "Crystallization equipment design",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Adsorption: characteristics, properties, and selection of adsorbents, adsorption isotherms, equipment for adsorption;",
+     "skill": "Adsorption isotherms and equipment",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Membrane separation techniques: materials, types, preparation, and characterization of membranes; Membrane modules; Dialysis; Reverse osmosis; Micro-, ultra, and nano-filtration; Pervaporation;",
+     "skill": "Membrane separation techniques",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -265,7 +529,51 @@
    },
    "rank": null,
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "To learn the process flow and instrumentation diagram.",
+     "skill": "Process flow and instrumentation diagrams",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Familiarize with process flow and instrumentation diagrams including symbols.",
+     "skill": "Familiarize with PFD symbols",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Gaining design and operation knowledge related to the process industries.",
+     "skill": "Design and operation knowledge of process industries",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Propose appropriate operating conditions including catalyst requirement for the synthesis/production of different useful products/chemicals.",
+     "skill": "Propose operating conditions and catalyst requirements",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Process intensification: introduction, structured catalytic reactors, reactive separation.",
+     "skill": "Process intensification",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Introduction to the following Industries including the special features of design and operation; Fuels and industrial gases including Natural gas; Process for the conversion of biomass (biofuel and bio-based chemicals production); Petrochemical and downstream products; Polymer- production and processing; Fertilizer; Cement; Caustic chlorine; Coal based chemicals; Petroleum refining processes; Nitrogen and its derivatives; Sulphur and its derivatives, Phosphorus and its derivatives; Soaps and detergents; Glycerin; Sugar; Pulp and paper; Alcohol based chemicals; Specialty chemicals; Leather; Paint and pigments; Fermentation industries;",
+     "skill": "Production processes for various chemical industries",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -309,7 +617,51 @@
    },
    "rank": null,
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "To build a preliminary understanding on mechanical design of process vessels used at various stages for the product development.",
+     "skill": "Mechanical design of process vessels",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Knowledge on various forms of stresses in pressure vessels and their relation.",
+     "skill": "Stress analysis in pressure vessels",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Mechanical designing of different parts/components used in heat exchangers or in separation units such as nuts/bolts, flanges, heads, shell, etc.",
+     "skill": "Mechanical design of heat exchanger components",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design of cylindrical and spherical vessels under internal pressure;",
+     "skill": "Design of cylindrical and spherical vessels under internal pressure",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design of supports for process vessels;",
+     "skill": "Design of supports for tall vessels",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Tray/plate column design;",
+     "skill": "Tray/plate column design",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 2,
@@ -345,7 +697,51 @@
    },
    "rank": null,
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Ability to analyse chemical reactors and reaction systems.",
+     "skill": "Analyze chemical reactors and reaction systems",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Designing experiments involving chemical reactors, analysing and interpreting data.",
+     "skill": "Design experiments for chemical reactors",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Ability to solve problems of mass transfer with reaction in solid catalysed reactions.",
+     "skill": "Solve mass transfer with reaction in solid catalyzed reactions",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Residence time distribution (RTD) experiments and analysis;",
+     "skill": "Residence time distribution (RTD) analysis",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Design of fluid-solid catalytic reactors;",
+     "skill": "Design of fluid-solid catalytic reactors",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Strategies for stable reactor operations;",
+     "skill": "Strategies for stable reactor operations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -381,7 +777,51 @@
    },
    "rank": null,
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Formulate the mathematical modeling of different physical and chemical processes such as reactor, distillation column, flash drum, etc.",
+     "skill": "Formulate mathematical models of chemical processes",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Simulate the chemical process to understand the dynamic behavior of the systems.",
+     "skill": "Simulate chemical processes to understand dynamic behavior",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Identify the optimum system parameters.",
+     "skill": "Identify optimum system parameters",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Conservation principle: mass, energy and momentum;",
+     "skill": "Develop models using conservation principles",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Batch reactor; Continuous stirred tank reactor (CSTR); CSTRs in series; Non-isothermal CSTR; Vaporizer; Flash drum; Reactor with mass transfer; Ideal binary distillation column; Batch distillation; Heat exchange equipment: shell and tube heat exchanger, condenser, Heat balance, Heat transfer coefficient;",
+     "skill": "Modeling of specific equipment: CSTR, distillation column, heat exchangers",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Simulation: different techniques, information flow diagram; Simulation of models.",
+     "skill": "Simulation techniques and information flow diagrams",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": null,
    "source": "database",
    "t": 0,
@@ -417,7 +857,51 @@
     "trust": 0.3
    },
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "to provide an understanding of the data science process, including data collection, cleaning, analysis, and interpretation",
+     "skill": "Data science process: collection, cleaning, analysis, interpretation",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "to develop understanding in statistical and machine learning techniques for data analysis",
+     "skill": "Statistical and machine learning techniques for data analysis",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "to conduct exploratory data analysis (EDA) and to create predictive models",
+     "skill": "Exploratory data analysis (EDA) and predictive modeling",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "to develop skills in visualizing data and creating compelling data stories",
+     "skill": "Data visualization and storytelling",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Knowledge regarding programming languages (e.g., Python) and data manipulation libraries (e.g., pandas, NumPy) to clean, process, and analyze data.",
+     "skill": "Python programming with pandas, NumPy for data manipulation",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Supervised Learning- Linear Regression, k-Nearest Neighbors (kNN), Naïve Bayes, Decision Trees Unit VI Unsupervised Learning- k-means, DBSCAN, GMM, Principal Component Analysis",
+     "skill": "Supervised and unsupervised learning algorithms",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": "IDE-I",
    "source": "database",
    "t": 0,
@@ -462,7 +946,51 @@
     "trust": 0.3
    },
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "The objective of the course is to provide a conceptual and theoretical understanding of the organization and functioning of a computer graphics rendering pipeline.",
+     "skill": "Computer graphics rendering pipeline",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "This course also accompanies coding, using Python or C++ or Java and OpenGL, of every algorithm/technology that will be taught giving a first hand experience of imaging app development and how it works.",
+     "skill": "Develop imaging applications using OpenGL",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "2D transformations, 3D transformations, Vanishing points, Viewing Transformation.",
+     "skill": "2D and 3D transformations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Digital Differential Algorithms, Bresenham’s algorithms, polygon filling, Windowing and Clipping, problems of aliasing.",
+     "skill": "Rasterization algorithms: Bresenham's, polygon filling",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Graph based models, B-REP model, Constructive Solid Geometry (CSG), Octree based representation, Quadtree based representation.",
+     "skill": "Geometric modeling: B-REP, CSG, Octree, Quadtree",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Hidden Surface Removal, Back face removal, Z-Buffer Algorithm, Scan-line algorithm for VSD, algorithm, BSP trees.",
+     "skill": "Hidden surface removal algorithms",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": "IDE-II",
    "source": "database",
    "t": 0,
@@ -515,7 +1043,51 @@
     "trust": 0.3
    },
    "semester": 4,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Number Representation and Errors: Numerical Errors; Floating Point Representation; Finite Single and Double Precision Differences; Machine Epsilon; Significant Digits.",
+     "skill": "Error analysis and floating-point representation",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Numerical Methods for Solving Nonlinear Equations: Method of Bisection, Secant Method, False Position, Newton‐Raphson's Method, Multidimensional Newton's Method, Fixed Point Method and their convergence.",
+     "skill": "Root-finding methods for nonlinear equations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Numerical Methods for Solving System of Linear Equations: Norms; Condition Numbers, Forward Gaussian Elimination and Backward Substitution; Gauss‐Jordan Elimination; FGE with Partial Pivoting and Row Scaling; LU Decomposition; Iterative Methods: Jacobi, Gauss Siedal; Power method and QR method for Eigen Value and Eigen vector.",
+     "skill": "Solving systems of linear equations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Interpolation and Curve Fitting: Introduction to Interpolation; Calculus of Finite Differences; Finite Difference and Divided Difference Tables; Newton‐Gregory Polynomial Form; Lagrange Polynomial Interpolation; Theoretical Errors in Interpolation; Spline Interpolation; Approximation by Least Square Method.",
+     "skill": "Interpolation and curve fitting",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Numerical Differentiation and Integration: Discrete Approximation of Derivatives: Forward, Backward and Central Finite Difference Forms, Numerical Integration, Simple Newton‐Cotes Rules: Trapezoidal and Simpson's (1/3) Rules; Gaussian Quadrature Rules: Gauss‐Legendre, Gauss‐Laguerre, Gauss‐Hermite, Gauss‐Chebychev.",
+     "skill": "Numerical differentiation and integration",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Numerical Solution of ODE & PDE: Euler's Method for Numerical Solution of ODE; Modified Euler's Method; Runge‐Kutta Method (RK2, RK4), Error estimate; Multistep Methods: Predictor‐Corrector method, Adams‐Moulton Method; Boundary Value Problems and Shooting Method; finite difference methods, numerical solutions of elliptic, parabolic, and hyperbolic partial differential equations.",
+     "skill": "Numerical solution of ODEs and PDEs",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": "IDE-I",
    "source": "database",
    "t": 0,
@@ -551,7 +1123,51 @@
     "trust": 0.3
    },
    "semester": 5,
-   "skills": [],
+   "skills": [
+    {
+     "quote": "Fourier series: Fourier Integral, Fourier series of 2π periodic functions, Fourier series of odd and even functions, Half-range series, Convergence of Fourier series, Gibb’s phenomenon, Differentiation and Integration of Fourier series, Complex form of Fourier series. Fourier Transformation: Fourier Integral Theorem, Fourier Transforms, Properties of Fourier Transform, Convolution and its physical interpretation, Statement of Fubini’s theorem, Convolution theorems, Inversion theorem.",
+     "skill": "Fourier series and transforms",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Linear and quasi-linear first order PDE, Lagrange’s Method of solution and its geometrical interpretation, compatibility condition, Charpits method, special types of first order equations.",
+     "skill": "Solve first-order PDEs using Lagrange's and Charpit's methods",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Derivations of Heat and Wave equations in one-dimension and interpretation of different types of conditions.",
+     "skill": "Derivation and solution of heat and wave equations",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Second order PDE and classification of second order semi-linear PDE, Canonical form.",
+     "skill": "Classification and canonical forms of second-order PDEs",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "Fourier series method for IBV problem for wave and heat equation in 1-D, rectangular region. Uniqueness of solutions for IBVPs for heat and wave equations. Laplace and Poisson equations, Maximum principle with application, Fourier series method for Laplace equation in two and three dimensions. Fourier transform method to solve PDEs.",
+     "skill": "Solve PDEs using Fourier series and transform methods",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    },
+    {
+     "quote": "D’ Alemberts formula and Duhamel’s principle for one dimensional wave equation,",
+     "skill": "D'Alembert's formula and Duhamel's principle for wave equation",
+     "source": "inferred",
+     "trust": 0.3,
+     "verified": false
+    }
+   ],
+   "skills_status": "model",
    "slot": "IDE-II",
    "source": "database",
    "t": 0,
@@ -560,6 +1176,31 @@
    "trust": 0.9,
    "verified": false
   }
+ },
+ "earlier_core": {
+  "1": [
+   "CE1101",
+   "CS1101",
+   "EE1101",
+   "HS1101",
+   "MA1101",
+   "PH1101"
+  ],
+  "2": [
+   "CH1201",
+   "CS1201",
+   "IK1201",
+   "MA1201",
+   "ME1201",
+   "ME1202"
+  ],
+  "3": [
+   "CB2101",
+   "CB2102",
+   "CB2103",
+   "CB2104",
+   "CB2105"
+  ]
  },
  "foundations": [
   {
@@ -627,7 +1268,7 @@
   4,
   5
  ],
- "input_hash": "3b1de3e5a95aca0270fc8c8c07965f1ab3239081114942eba117026ffeaafd10",
+ "input_hash": "e4f35cf4587f7958ebb80ef5b10c3d255becd021e37595bfd85a942b7e6266cd",
  "later_core": {
   "6": [
    "CB3201",
@@ -661,7 +1302,8 @@
  "prompt_versions": {
   "foundations": "foundations_v1",
   "prerequisites": "prereq_v1",
-  "rank": "rank_v2"
+  "rank": "rank_v2",
+  "skills": "skills_v1"
  },
  "rank_source": "model",
  "rules": [

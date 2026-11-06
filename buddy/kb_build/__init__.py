@@ -25,10 +25,11 @@ Modules
     horizon.py    full records + ranking only for kb_horizon_semesters; later slots as codes (code)
     rank.py       order slot options; code checks ids, text_available, lab claims        (model + code)
     prereqs.py    database prerequisites; model edges among slice/already_done codes      (model + code)
+    skills.py     up to 6 skills per full-record course, each quote-checked              (model + code)
     foundations.py  per weakness, up to 2 window options                                  (model + code)
     checks.py     KB checks: size 8-15 (warn), course exists, slot membership             (code)
     slice.py      run the steps and write data/kb/slices/<persona_id>.json                 (code)
     review.py     reports/kb_review_<persona_id>.md                                        (code)
-Order: persona -> available -> eligibility -> horizon -> shortlist -> rank -> prerequisites -> foundations
--> rules -> checks -> slice + review
+Order: persona -> available -> eligibility -> horizon -> shortlist -> rank -> prerequisites -> skills
+-> foundations -> rules -> checks -> slice + review
 """

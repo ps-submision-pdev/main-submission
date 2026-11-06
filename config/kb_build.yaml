@@ -16,5 +16,16 @@ kb_max_courses: 15
 # rank_v2 does not. rank_v1 is kept for comparison.
 rank_prompt_version: rank_v2
 
+# Which skills prompt the builder uses (buddy/kb_build/prompts/skills_v1.md).
+skills_prompt_version: skills_v1
+
 # How much of a course's description (or objectives) the rank and foundation prompts show per course.
 description_chars: 240
+
+# Which steps may call the model. All true = the full build. A step set to false runs its code-only
+# path: rank -> keyword fallback, prerequisites -> database only, skills -> none, foundations -> none.
+use_model:
+  rank: true
+  prerequisites: true
+  skills: true
+  foundations: true
