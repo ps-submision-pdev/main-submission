@@ -1,6 +1,14 @@
--checking out what will be stored in database and what will be stored in knowledgebase
+checking out what will be stored in database and what will be stored in knowledgebase
 as there is a rule - "No ot her network calls: no out bound calls e x cept to t he configured model
 provider"
 so i cant really fetch the required department pdf's at run time
 but for the scope of this task I'll just downlooad on basis of persona
+
+data i extracted was basically just string of whole pg-> used a python script
+to convert that into structured data for further use
+
+moving onto addidng the persona
+my plan is a code+llm split will fetch from database what needs 
+to be in kb
+
 
