@@ -585,3 +585,12 @@ Newest entries at the bottom. Commands are run from the repo root.
 - Checked: the README's "about 41,000 tokens" matches the 5 real calls (8,632 + 4,750 + 5,023 + 18,116 + 4,818
   = 41,339).
 - Not committed: waiting for the student.
+
+## 2026-11-06: README: why two rank prompts were run
+
+- At the student's request, a short summary was added to the README "Token use" section, above the
+  generated table: why rank_v1 and rank_v2 were both run (the hints seemed to steer the model; a single
+  comparison showed the same top 5), that rank_v2 is now the only prompt used, and that the comparison cost
+  about 9,800 of the 41,000 tokens. It links to data/demo/chem_data_s4.rank_v1_vs_v2.md.
+- The generated table and the student's other text are unchanged. Committed and pushed under the student's
+  name, with no co-author line.
