@@ -594,3 +594,13 @@ Newest entries at the bottom. Commands are run from the repo root.
   about 9,800 of the 41,000 tokens. It links to data/demo/chem_data_s4.rank_v1_vs_v2.md.
 - The generated table and the student's other text are unchanged. Committed and pushed under the student's
   name, with no co-author line.
+
+## 2026-11-06: README version-choice section rewritten in the student's preferred wording
+
+- The student pasted the agent's chat explanation of the rank_v1/rank_v2 choice and asked for the README section
+  in that form. The previous three bullets were replaced by it, under a "### Why two rank prompts appear in the
+  table" heading, keeping the student's structure, numbers and wording.
+- Edits for a README in the student's first person: "I offered... You then asked" became "I wrote... and ran";
+  "my keyword hints" became "the keyword hints"; "it gives you... you tested" became "it gives... the prompt
+  design was tested". The chat-only last sentence was left out.
+- The generated token table below it is unchanged. Committed and pushed under the student's name, no co-author line.
