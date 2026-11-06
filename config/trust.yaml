@@ -13,3 +13,7 @@ kb:
   inferred: 0.3        # proposed by the model AND backed by a verbatim quote that code found
   llm_inferred: 0.3    # model judgment (skills, foundations) backed by a verbatim quote that code found
   self_declared: 0.4   # the student's own claim (likely_known topics)
+
+# A known topic is skipped in a plan only if its best supporting fact has at least this trust.
+# self_declared (0.4) is not enough; a passed check question set adds a "tested" fact (0.7), which is.
+skip_threshold: 0.7

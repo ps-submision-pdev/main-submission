@@ -23,6 +23,12 @@ data/cache/
 # LLM call and token logs (written by buddy/llm.py on every call)
 data/logs/
 
+# a student's profile (facts, plan versions, recent turns) is personal data
+data/profile/
+
+# the Research folder is its own repo (pushed separately), never part of this one
+/Research/
+
 # data/demo/ is committed on purpose: do not ignore it
 
 # half-written or partial pipeline output

@@ -105,3 +105,8 @@ def test_core_and_slot_options_in_their_own_semester_pass_membership():
 def test_core_keys_may_be_strings_after_a_json_round_trip():
     programme = json.loads(json.dumps(PROGRAMME))       # {"5": [...]} instead of {5: [...]}
     assert violations({5: SEM5}, profile(), programme=programme) == []
+
+
+def test_a_course_already_passed_cannot_be_planned_again():
+    found = violations({5: SEM5}, profile(passed=["MA1101", "MA1201", "CB3101"]))
+    assert [v["rule_id"] for v in found] == ["kb-already-passed"] and "CB3101" in found[0]["message"]

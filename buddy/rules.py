@@ -14,7 +14,8 @@ must change) or "warning" (allowed, but the student must know: approval needed, 
 Every number comes from the rule's "parameters", never from this file. Each rule id has one function
 in CHECKS; a rule without a function raises an error instead of being skipped silently.
 Two checks come from the knowledge base, not the ordinance: "kb-course-exists" (the code is known)
-and "kb-slot-membership" (a course is core for its semester or an option of a slot in that semester).
+"kb-slot-membership" (a course is core for its semester or an option of a slot in that semester) and
+"kb-already-passed" (a planned course the student has already passed).
 """
 from __future__ import annotations
 
@@ -121,6 +122,8 @@ def check_plan(plan: dict, profile: dict, programme: dict, catalog: dict, rules:
     out = [finding("kb-course-exists", sem, "violation", f"{code} is not a course in the knowledge base")
            for sem, codes in sorted(plan.items()) for code in codes if code not in catalog]
     out += slot_membership(plan, programme, catalog)
+    out += [finding("kb-already-passed", sem, "violation", f"{code} is already passed; it cannot be taken again")
+            for sem, codes in sorted(plan.items()) for code in codes if code in profile["passed"]]
     for rule in rules:
         if rule["id"] not in CHECKS:
             raise ValueError(f"no checker written for rule {rule['id']}")
