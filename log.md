@@ -533,3 +533,27 @@ Newest entries at the bottom. Commands are run from the repo root.
   chem_ml_demo.rank_preview_51.json, llm_answers/ (5 raw answers), token_summary.md, and README.md
   listing them. Nothing in data/demo/ is git-ignored.
 - Token summary so far: 9 log lines; 5 real calls, 4 cache hits, 0 failures.
+
+## 2026-11-06: Project pushed to GitHub (existing repo, origin/main)
+
+- The repo is this folder, branch main.
+  No remote was added or changed.
+- Before adding anything:
+  - `git check-ignore -v` confirmed that .env, .claude/, data/cache/, data/logs/, the three root problem-statement
+    PDFs, the notes .docx and .DS_Store are ignored; .pytest_cache/ and __pycache__/ are ignored too;
+  - a key-pattern grep over the 92 files to be added matched only two deliberate test fakes:
+    tests/test_llm.py (api_key="not-a-real-key") and tests/test_token_summary.py ("sk-SECRET-123").
+    .env was not opened;
+  - only one file is over 5 MB: data/db/resolved.json (6.7 MB, generated). The total is about 25 MB.
+- chat.py and test.py were left untracked: not added, not deleted. build_log.txt (the student's own) was not touched.
+- Commits, in groups:
+  - 49b4f1c ingest + data/raw (+ .gitignore, requirements.txt, .env.example);
+  - 7f691b9 data/extracted + data/db + reports;
+  - 9f6bf67 buddy + config + personas + scripts;
+  - 95a127e tests;
+  - 9b1b75f data/kb + data/demo;
+  - da86266 README, CLAUDE.md, log.md.
+  Each message ends with a Co-Authored-By: Claude line.
+- `git pull --rebase origin main` (already up to date), then `git push origin main` (00409c0..da86266). No force.
+- After the push, 93 files are tracked (about 25 MB on disk).
+- Not done by the agent: changing repo visibility or inviting collaborators. The student checks these in GitHub settings.
