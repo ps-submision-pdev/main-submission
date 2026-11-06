@@ -1,0 +1,16 @@
+# Settings for the chat buddy (buddy/chat, buddy/planner). Trust numbers live in config/trust.yaml.
+
+# Prompt versions: each is a file buddy/prompts/<version>.md. A new wording gets a new version,
+# so the LLM cache (keyed by prompt version) never mixes old and new answers.
+prompts:
+  route: route_v1
+  intake: intake_v1
+  choose: choose_v1
+  revise: revise_v1
+  answer: answer_v1
+
+# How many recent turns the profile keeps. Only the router's model call sees them; no other call does.
+recent_turns: 6
+
+# How many plans the model may propose for one change request before code gives the nearest valid plan.
+max_revise_attempts: 2
