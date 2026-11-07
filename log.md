@@ -905,3 +905,14 @@ Newest entries at the bottom. Commands are run from the repo root.
 
 - The student confirmed the intended name. `git mv` was used, so the content is unchanged. Pushed under the
   student's name with no co-author line.
+
+## 2026-11-07: Code vs model split table saved
+
+- At the student's request: dryrun_code_vs_llm.md shows, per dry-run step, whether code or the model answered,
+  the model calls, seconds and tokens (from data/logs/dryrun.md and make_it_solid.md). Totals: 6 of 10 steps by
+  code (0 tokens), 4 by the model (8 calls, 9,532 tokens). Not committed.
+
+## 2026-11-07: Code vs model split table added to README
+
+- At the student's request: the dry-run table from dryrun_code_vs_llm.md was added to README.md as a
+  "In the recording dry run" subsection under "What code does and what the model does". Not committed.
