@@ -916,3 +916,12 @@ Newest entries at the bottom. Commands are run from the repo root.
 
 - At the student's request: the dry-run table from dryrun_code_vs_llm.md was added to README.md as a
   "In the recording dry run" subsection under "What code does and what the model does". Not committed.
+
+## 2026-11-24: Event and problem-statement wording removed from all three repos
+
+- At the student's request: the event name, the sponsor name and the short problem-statement label were removed from
+  the text of the three repos in the organisation (this one, the crawler and the research notes), including past
+  commits and commit messages. The history was rewritten and force-pushed, so commit hashes changed. Backups of the
+  old history were kept locally as git bundles.
+- Replacements were plain wording changes. Source PDFs and the organisation name in cross-repo links were left alone.
+  The fetch User-Agent string was renamed; nothing else in the code changed. No co-author lines.
